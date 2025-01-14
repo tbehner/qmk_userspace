@@ -118,6 +118,7 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(enter_combo, KC_ENT),
   COMBO(tab_combo, KC_TAB),
   COMBO(esc_combo, KC_ESC),
+  COMBO(aw_switch_combo, AW_SWITCH),
 };
 
 

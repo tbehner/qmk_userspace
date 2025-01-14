@@ -95,11 +95,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_QWERTY] = LAYOUT(
     _______, _______, _______, _______, _______, _______, _______,                              _______, _______, _______, _______, _______, _______, _______, \
-    _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    _______,                              _______, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______, \
-    COPY   , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    _______,                              _______, KC_H,    KC_N,    KC_E ,   KC_I ,   KC_O,    _______, \
-    PASTE  , ZMT,     XMT ,    CMT ,    VMT ,    BMT ,    KC_ESC ,                              KC_ESC , KC_K,    MMT ,    COMMT,   DOTMT,   SLMT   , _______, \
-    _______, _______, _______, _______,          QK_LEAD, TOSYM  ,  ATAB   ,          SENT   ,  SSYM   , QK_LEAD,        _______, _______, _______, _______  \
+    _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    _______,                              _______, KC_J,    KC_L   ,  KC_U,    KC_Y,    KC_SCLN,_______, \
+    COPY   , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    _______,                              _______, KC_H,    KC_N   ,  KC_E ,   KC_I ,   KC_O,   _______, \
+    PASTE  , ZMT,     XMT ,    CMT ,    VMT ,    BMT ,    _______,                              _______, KC_K,    MMT    ,  COMMT,   DOTMT,   SLMT   ,_______, \
+    _______, _______, _______, QK_LEAD,          TOSYM  , ATAB   , _______ ,           _______ , SENT  ,  SSYM   ,        QK_LEAD , _______, _______, _______  \
   ),
+
 
   /* Numbers
    * ,----------------------------------------------------------------------------------------------------------------------.
@@ -119,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______,_______,                       _______, KC_SPC,  KC_7,    KC_8,    KC_9,    KC_UNDS, _______, \
     _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______,_______,                       _______, KC_COMM, KC_4,    KC_5,    KC_6,    KC_MINS, _______, \
     _______, KC_F9,   F10ALT,  F11GUI,  F12CTL,  KC_SPC ,_______,                       _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_DOT,  _______, \
-    _______, _______, _______, _______,          _______,TOSYM  ,TODEF  ,       _______,TODEF  , _______ ,          _______, _______, _______, _______  \
+    _______, _______, _______, _______,          TOSYM  ,TODEF  ,_______,       _______,_______, TODEF  ,          _______, _______, _______, _______  \
   ),
 
   /* Symbols:
@@ -140,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS,                        KC_TRNS, KC_MINS, KC_DQT,  KC_ASTR, KC_BSLS, KC_QUES, KC_TRNS, \
     KC_LCTL, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS,                        KC_BSPC, KC_UNDS, KC_QUOT, KC_EQL,  KC_PLUS, KC_ENT , KC_TRNS, \
     KC_LSFT, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS,                        KC_DEL , KC_AMPR, KC_COLON,KC_LABK, KC_RABK, KC_ENT , KC_TRNS, \
-    KC_LCTL, KC_LGUI, KC_LALT, KC_ASTR,          KC_TRNS, STNAV  , TODEF,        KC_BSPC, TONAV , KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
+    KC_LCTL, KC_LGUI, KC_LALT, KC_ASTR,          STNAV  , TODEF  , KC_TRNS,       KC_TRNS,KC_BSPC, TONAV  ,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
   ),
 
   /* Raise
@@ -161,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, CUT    , KC_TRNS, KC_TRNS, CW_UP  , KC_TRNS, KC_MS_WH_UP,                    KC_TRNS, KC_TRNS, KC_PGDN, KC_PGUP,  KC_TRNS, KC_TRNS, KC_TRNS, \
     KC_TRNS, COPY   , KC_TRNS, CW_LEFT, CW_DOWN, CW_RIGHT,KC_MS_WH_DOWN,                  KC_TRNS, KC_LEFT, KC_DOWN, KC_UP  ,  KC_RGHT, KC_ENT , KC_TRNS, \
     KC_TRNS, KC_LSFT, KC_LALT, KC_LGUI, KC_LCTL, KC_TRNS, KC_TRNS,                        KC_DEL , PSPREV,  TABPREV, TABNEXT,  PSNEXT,  KC_COMM, KC_TRNS, \
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS , TONUM  ,TODEF ,        KC_DEL ,KC_ENT , KC_TRNS,          KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS   \
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          TONUM  , TODEF  ,KC_TRNS,        KC_DEL ,KC_DEL , KC_ENT,           KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS   \
   ),
 
 };
