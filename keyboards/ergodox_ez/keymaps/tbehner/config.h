@@ -207,3 +207,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define DEBUG_MATRIX_SCAN_RATE
 #define COMBO_COUNT 4
+#define LEADER_TIMEOUT 300

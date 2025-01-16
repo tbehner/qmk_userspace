@@ -27,6 +27,13 @@ enum custom_keycodes {
 #define CALTDEL LCTL(LALT(KC_DEL))
 #define TSKMGR LCTL(LSFT(KC_ESC))
 
+/// new home row modifiers
+///
+/// Left upper row
+#define PMT   MT(MOD_LCTL | MOD_LSFT, KC_P)
+#define FMT   MT(MOD_LGUI | MOD_LSFT, KC_F)
+#define WMT   MT(MOD_LALT | MOD_LSFT, KC_W)
+
 /// Left lower row
 #define XMT  MT(MOD_LALT, KC_X)
 #define CMT  MT(MOD_LGUI, KC_C)
@@ -67,10 +74,8 @@ enum custom_keycodes {
 #define MLEFT LCAG(KC_LEFT)
 #define MRGHT LCAG(KC_RGHT)
 
-
-
 const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = { KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
 const uint16_t PROGMEM ent_combo[] = { KC_U, KC_Y, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -101,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
   KC_A,    KC_R,    KC_S,    KC_T,    KC_D,         KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
   ZMT ,    XMT ,    CMT ,    VMT ,    KC_B,         KC_K,    MMT ,    COMMT,   DOTMT,   SLMT,
-                    KC_TAB , GTSYM ,  NTAB,         SENT,    SSYM,    KC_ESC
+                    QK_LEAD, GTSYM ,  NTAB,         SENT,    SSYM,    QK_LEAD
 ),
 
 [_SYMB] = LAYOUT_split_3x5_3(
@@ -153,4 +158,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
   }
   return true;
+}
+
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_E)) {
+        // Leader, f => Types the below string
+        SEND_STRING(SS_TAP(X_ESC));
+    } else if (leader_sequence_one_key(KC_N)) {
+        SEND_STRING(SS_TAP(X_ENT));
+    } else if (leader_sequence_one_key(KC_T)) {
+        SEND_STRING(SS_TAP(X_TAB));
+    }
+
 }

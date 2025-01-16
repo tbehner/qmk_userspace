@@ -64,9 +64,9 @@ enum custom_keycodes {
 /// new home row modifiers and thumb cluster
 ///
 /// Left upper row
-
-#define WMT   MT(MOD_LALT | MOD_LSFT, KC_W)
+#define PMT   MT(MOD_LCTL | MOD_LSFT, KC_P)
 #define FMT   MT(MOD_LGUI | MOD_LSFT, KC_F)
+#define WMT   MT(MOD_LALT | MOD_LSFT, KC_W)
 
 /// Left home row
 #define AMT   KC_A
@@ -107,17 +107,19 @@ enum custom_keycodes {
 #define STNAV TO(STICKY_MDIA)
 #define STNUM TO(STICKY_NUMB)
 
+// UY -> Ent
 const uint16_t PROGMEM enter_combo[] = { KC_U, KC_Y, COMBO_END};
+// LU -> Esc
 const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = { KC_F, KC_P, COMBO_END};
-const uint16_t PROGMEM aw_switch_combo[] = { KC_W, KC_F, COMBO_END};
+// NI -> Tab
+const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(enter_combo, KC_ENT),
   COMBO(tab_combo, KC_TAB),
   COMBO(esc_combo, KC_ESC),
-  COMBO(aw_switch_combo, AW_SWITCH),
 };
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -143,10 +145,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = LAYOUT_ergodox_pretty(
   KC_NO,        KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_PLUS,              KC_EQL,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,      KC_NO,
-  KC_NO,        KC_Q,        WMT  ,         FMT  ,   KC_P,    KC_G,    CW_LEFT,              CW_RIGHT,     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,   KC_NO,
-  KC_NO,        AMT  ,       RMT  ,         SMT  ,   TMT ,    KC_D,                                        KC_H,    NMT ,    EMT ,    IMT ,    OMT  ,     KC_NO,
+  KC_NO,        KC_Q,        WMT  ,         FMT  ,   KC_P,    KC_G,    CW_LEFT,              CW_RIGHT,     KC_J,    KC_L,    KC_U ,   KC_Y ,    KC_SCLN,   KC_NO,
+  KC_NO,        AMT  ,       RMT  ,         SMT  ,   TMT ,    KC_D,                                        KC_H,    NMT ,    EMT ,    IMT  ,    OMT  ,     KC_NO,
   KC_NO,        ZMT  ,       XMT  ,         CMT  ,   VMT ,    BMT,     CW_DOWN,              CW_UP,        KC_K,    MMT ,    COMMT,   DOTMT,   SLMT  ,    KC_NO,
-  KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, KC_LALT,                                              LT(STICKY_NUMB,KC_ENT),  KC_SPC,  KC_RALT, KC_RSFT,   KC_NO,
+  KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, QK_LEAD,                                              QK_LEAD, KC_SPC,  KC_RALT, KC_RSFT,   KC_NO,
                                                              KC_HOME, KC_END  ,              KC_PGUP, KC_PGDN,
                                                                       KC_TAB  ,              KC_ESC,
                                                      GTSYM, NTAB,     KC_TAB  ,              KC_ESC, SENT , SSYM
@@ -286,8 +288,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_TRNS,     KC_TRNS,
                                       KC_TRNS, GTDEF  , KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
 ),
-
-
 };
 
 
@@ -296,9 +296,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
       case VRSN:
         SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-        return false;
-      case AW_SWITCH:
-        SEND_STRING(SS_DOWN(X_LCTL) "c" SS_UP(X_LCTL) "w");
         return false;
       case TRM_INS: // Alacritty enter insert mode
         SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_LSFT) " " SS_UP(X_LCTL) SS_UP(X_LSFT));
@@ -315,11 +312,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case CW_UP:
         SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "k");
         return false;
-      #ifdef RGBLIGHT_ENABLE
-      case RGB_SLD:
-        rgblight_mode(1);
-        return false;
-      #endif
     }
   }
   return true;
@@ -399,3 +391,19 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   return state;
 };
+
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_E)) {
+        // Leader, f => Types the below string
+        SEND_STRING(SS_TAP(X_ESC));
+    } else if (leader_sequence_one_key(KC_N)) {
+        SEND_STRING(SS_TAP(X_ENT));
+    } else if (leader_sequence_one_key(KC_T)) {
+        SEND_STRING(SS_TAP(X_TAB));
+    }
+
+}
