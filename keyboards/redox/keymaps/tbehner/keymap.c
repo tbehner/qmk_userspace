@@ -94,12 +94,11 @@ enum custom_keycodes {
 #define ENAV LT(NAV, KC_E)
 
 /// Left upper row
-#define PMT MT(MOD_LCTL | MOD_LSFT, KC_P)
 #define FMT MT(MOD_LGUI | MOD_LSFT, KC_F)
 #define WMT MT(MOD_LGUI | MOD_LSFT, KC_W)
 
 /// Left lower row
-#define ZMT  MT(MOD_RALT, KC_Z)
+#define ZMT  MT(MOD_LSFT, KC_Z)
 #define XMT  MT(MOD_LALT, KC_X)
 #define CMT  MT(MOD_LGUI, KC_C)
 #define VMT  MT(MOD_LCTL, KC_V)
@@ -129,7 +128,7 @@ enum custom_keycodes {
 #define APREV LSA(KC_TAB)
 
 const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = { KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
 const uint16_t PROGMEM enter_combo[] = { KC_U, KC_Y, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -138,13 +137,14 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(enter_combo, KC_ENT),
 };
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                                            _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_Q    ,WMT     ,FMT     ,PMT     ,KC_G    ,CW_LEFT ,                          CW_RIGHT,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,_______ ,
+     _______ ,KC_Q    ,WMT     ,FMT     ,KC_P    ,KC_G    ,CW_LEFT ,                          CW_RIGHT,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,KC_SCLN ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______ ,KC_A    ,KC_R    ,KC_S    ,KC_T    ,KC_D    ,CW_DOWN ,                          CW_UP   ,KC_H    ,KC_N    ,KC_E    ,KC_I    ,KC_O    ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
