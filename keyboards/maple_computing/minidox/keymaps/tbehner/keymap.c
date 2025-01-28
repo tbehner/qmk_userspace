@@ -35,6 +35,7 @@ enum custom_keycodes {
 #define WMT   MT(MOD_LALT | MOD_LSFT, KC_W)
 
 /// Left lower row
+#define BMT  MT(MOD_LALT | MOD_LSFT, KC_B)
 #define XMT  MT(MOD_LALT, KC_X)
 #define CMT  MT(MOD_LGUI, KC_C)
 #define VMT  MT(MOD_LCTL, KC_V)
@@ -103,9 +104,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [_BASE] = LAYOUT_split_3x5_3(
-  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
+  KC_Q,    WMT ,    FMT ,    PMT ,    KC_G,         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
   KC_A,    KC_R,    KC_S,    KC_T,    KC_D,         KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
-  ZMT ,    XMT ,    CMT ,    VMT ,    KC_B,         KC_K,    MMT ,    COMMT,   DOTMT,   SLMT,
+  ZMT ,    XMT ,    CMT ,    VMT ,    BMT,         KC_K,    MMT ,    COMMT,   DOTMT,   SLMT,
                     QK_LEAD, GTSYM ,  NTAB,         SENT,    SSYM,    QK_LEAD
 ),
 
@@ -119,9 +120,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAV] = LAYOUT_split_3x5_3(
   // left hand
-  KC_TRNS, MLEFT  , MRGHT,   CW_UP  , KC_HOME,                    APREV,   KC_TRNS, KC_TRNS, ANEXT,   KC_TRNS,
+  KC_TRNS, MLEFT  , MRGHT,   CW_UP  , KC_HOME,                    APREV,   KC_PGDN, KC_PGUP, ANEXT,   KC_TRNS,
   COPY   , KC_TRNS, CW_LEFT, CW_DOWN, CW_RIGHT,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_TRNS,
-  PASTE  , KC_INS , KC_PGUP, KC_PGDN, KC_END ,                    PSPREV,  TABPREV, TABNEXT, PSNEXT,  KC_TRNS,
+  PASTE  , KC_INS , KC_LGUI, KC_LCTL, BMT    ,                    PSPREV,  TABPREV, TABNEXT, PSNEXT,  KC_TRNS,
                     KC_TRNS, GTNUM  , GTDEF  ,                    KC_DEL , KC_ENT, KC_TRNS
 ),
 
