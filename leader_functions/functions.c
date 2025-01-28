@@ -12,5 +12,4 @@ void leader_end_user(void) {
     } else if (leader_sequence_one_key(KC_T)) {
         SEND_STRING(SS_TAP(X_TAB));
     }
-
 }
