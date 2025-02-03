@@ -262,22 +262,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-void leader_start_user(void) {
-    // Do something when the leader key is pressed
-}
+#include "leader_functions/functions.c"
 
-void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_N)) {
-        // Leader, n => Enter
-        SEND_STRING(SS_TAP(X_ENT));
-    } else if (leader_sequence_one_key(KC_E)) {
-        // Leader, e => Esc
-        SEND_STRING(SS_TAP(X_ESC));
-    } else if (leader_sequence_two_keys(KC_W, KC_S)) {
-        // Leader, w, s => WezTerm Split vertical
-        SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_LALT) SS_DOWN(X_LSFT) SS_DELAY(100) "|" SS_UP(X_LCTL) SS_UP(X_LALT) SS_UP(X_LSFT));
-    } else if (leader_sequence_two_keys(KC_W, KC_H)) {
-        // Leader, w, s => WezTerm Split horizontal
-        SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_LALT) SS_DOWN(X_LSFT) SS_DELAY(100) "_" SS_UP(X_LCTL) SS_UP(X_LALT) SS_UP(X_LSFT));
-    }
-}

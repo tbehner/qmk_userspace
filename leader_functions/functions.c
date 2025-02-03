@@ -9,7 +9,7 @@ void leader_end_user(void) {
         SEND_STRING(SS_TAP(X_ESC));
     } else if (leader_sequence_one_key(KC_N)) {
         SEND_STRING(SS_TAP(X_ENT));
-    } else if (leader_sequence_one_key(KC_T)) {
-        SEND_STRING(SS_TAP(X_TAB));
+    } else if (leader_sequence_two_keys(KC_T, KC_E)) {
+        SEND_STRING(SS_LCTL("\\n"));
     }
 }
