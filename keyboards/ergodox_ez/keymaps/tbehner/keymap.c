@@ -85,7 +85,7 @@ enum custom_keycodes {
 #define CMT  MT(MOD_LGUI, KC_C)
 #define VMT  MT(MOD_LCTL, KC_V)
 #define XMT  MT(MOD_LALT, KC_X)
-#define ZMT  MT(MOD_RALT, KC_Z)
+#define ZMT  MT(MOD_LSFT, KC_Z)
 
 /// Right lower row
 #define DOTMT   MT(MOD_LALT, KC_DOT)
@@ -118,7 +118,6 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(enter_combo, KC_ENT),
   COMBO(tab_combo, KC_TAB),
   COMBO(esc_combo, KC_ESC),
-  COMBO(aw_switch_combo, AW_SWITCH),
 };
 
 
@@ -393,4 +392,4 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return state;
 };
 
-#include "../../../leader_functions/functions.c"
+#include "leader_functions/functions.c"
