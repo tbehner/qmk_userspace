@@ -15,5 +15,9 @@ void leader_end_user(void) {
         SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("|"))));
     } else if (leader_sequence_two_keys(KC_T, KC_H)) {
         SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("_"))));
+    } else if (leader_sequence_one_key(KC_H)) {
+        SEND_STRING(SS_LCTL(SS_LSFT(SS_TAP(X_LEFT))));
+    } else if (leader_sequence_one_key(KC_I)) {
+        SEND_STRING(SS_LCTL(SS_LSFT(SS_TAP(X_RIGHT))));
     }
 }
