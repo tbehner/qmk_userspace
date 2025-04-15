@@ -91,7 +91,7 @@ enum custom_keycodes {
 #define DOTMT   MT(MOD_LALT, KC_DOT)
 #define COMMT   MT(MOD_LGUI, KC_COMM)
 #define MMT     MT(MOD_RCTL, KC_M)
-#define SLMT    MT(MOD_RALT, KC_SLSH)
+#define KMT    MT(MOD_RALT, KC_K)
 
 #define SENT    OSM(MOD_LSFT)
 
@@ -120,7 +120,6 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(esc_combo, KC_ESC),
 };
 
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
@@ -145,14 +144,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = LAYOUT_ergodox_pretty(
   KC_NO,        KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_PLUS,              KC_EQL,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,      KC_NO,
-  KC_NO,        KC_Q,        WMT  ,         FMT  ,   KC_P,    KC_G,    CW_LEFT,              CW_RIGHT,     KC_J,    KC_L,    KC_U ,   KC_Y ,    KC_SCLN,   KC_NO,
+  KC_NO,        KC_Q,        WMT  ,         FMT  ,   KC_P,    KC_G,    CW_LEFT,              CW_RIGHT,     KC_J,    KC_L,    KC_U ,   KC_Y ,    QK_AREP,   KC_NO,
   KC_NO,        AMT  ,       RMT  ,         SMT  ,   TMT ,    KC_D,                                        KC_H,    NMT ,    EMT ,    IMT  ,    OMT  ,     KC_NO,
-  KC_NO,        ZMT  ,       XMT  ,         CMT  ,   VMT ,    BMT,     CW_DOWN,              CW_UP,        KC_K,    MMT ,    COMMT,   DOTMT,   SLMT  ,    KC_NO,
-  KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, QK_LEAD,                                              QK_LEAD, KC_SPC,  KC_RALT, KC_RSFT,   KC_NO,
+  KC_NO,        ZMT  ,       XMT  ,         CMT  ,   VMT ,    BMT,     CW_DOWN,              CW_UP,        KMT ,    MMT ,    COMMT,   DOTMT,    QK_REP  ,    KC_NO,
+  KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, QK_LEAD,                                              QK_LEAD, KC_SPC,  KC_RALT, KC_RSFT,  KC_NO,
                                                              KC_HOME, KC_END  ,              KC_PGUP, KC_PGDN,
                                                                       KC_TAB  ,              KC_ESC,
                                                      GTSYM, NTAB,     KC_TAB  ,              KC_ESC, SENT , SSYM
 ),
+
 
 /* Keymap 1: Symbol Layer
  *
@@ -179,8 +179,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand
   VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,     KC_TRNS, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
   KC_TRNS, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS,     KC_TRNS, KC_MINS, KC_DQT,  KC_ASTR, KC_BSLS, KC_QUES, KC_F12,
-  KC_TRNS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                        KC_UNDS, KC_QUOT, KC_EQL,  KC_PLUS, KC_ENT, KC_TRNS,
-  KC_TRNS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS,     KC_DQT , KC_AMPR, KC_COLON,KC_LABK, KC_RABK, GTCOM , KC_TRNS,
+  KC_TRNS, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                        KC_UNDS, KC_QUOT, KC_EQL,  KC_PLUS, KC_SCLN, KC_TRNS,
+  KC_TRNS, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS,     KC_DQT , KC_AMPR, KC_COLON,KC_LABK, KC_RABK, KC_SLSH, KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_DOT,  KC_TRNS, KC_TRNS,
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,

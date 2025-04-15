@@ -43,3 +43,4 @@ DEFAULT_FOLDER = ergodox_ez/base
 
 COMBO_ENABLE = yes
 LEADER_ENABLE = yes
+REPEAT_KEY_ENABLE = yes
