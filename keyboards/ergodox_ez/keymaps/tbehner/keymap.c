@@ -109,6 +109,8 @@ enum custom_keycodes {
 
 // UY -> Ent
 const uint16_t PROGMEM enter_combo[] = { KC_U, KC_Y, COMBO_END};
+// m, -> Ent
+const uint16_t PROGMEM lower_enter_combo[] = { KC_N, KC_E, COMBO_END};
 // LU -> Esc
 const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
 // NI -> Tab
@@ -116,6 +118,7 @@ const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(enter_combo, KC_ENT),
+  COMBO(lower_enter_combo, KC_ENT),
   COMBO(tab_combo, KC_TAB),
   COMBO(esc_combo, KC_ESC),
 };
