@@ -56,16 +56,20 @@ enum custom_keycodes {
 #define SENT    OSM(MOD_LSFT)
 #define SSYM    LT(_NUMBERS, KC_SPC)
 
+// UY -> Ent
 const uint16_t PROGMEM enter_combo[] = { KC_U, KC_Y, COMBO_END};
+// m, -> Ent
+const uint16_t PROGMEM lower_enter_combo[] = { KC_N, KC_E, COMBO_END};
+// LU -> Esc
 const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = { KC_F, KC_P, COMBO_END};
-const uint16_t PROGMEM aw_switch_combo[] = { KC_W, KC_F, COMBO_END};
+// NI -> Tab
+const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(enter_combo, KC_ENT),
+  COMBO(lower_enter_combo, KC_ENT),
   COMBO(tab_combo, KC_TAB),
   COMBO(esc_combo, KC_ESC),
-  COMBO(aw_switch_combo, AW_SWITCH),
 };
 
 #ifdef __APPLE__
@@ -95,9 +99,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_QWERTY] = LAYOUT(
     _______, _______, _______, _______, _______, _______, _______,                              _______, _______, _______, _______, _______, _______, _______, \
-    _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    _______,                              _______, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______, \
+    _______, KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    _______,                              _______, KC_J,    KC_L,    KC_U,    KC_Y,    QK_AREP, _______, \
     COPY   , KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    _______,                              _______, KC_H,    KC_N,    KC_E ,   KC_I ,   KC_O,    _______, \
-    PASTE  , ZMT,     XMT ,    CMT ,    VMT ,    BMT ,    KC_ESC ,                              KC_ESC , KC_K,    MMT ,    COMMT,   DOTMT,   SLMT   , _______, \
+    PASTE  , ZMT,     XMT ,    CMT ,    VMT ,    BMT ,    KC_ESC ,                              KC_ESC , KC_K,    MMT ,    COMMT,   DOTMT,   QK_REP , _______, \
     _______, _______, _______, _______,          QK_LEAD, TOSYM  ,  ATAB   ,          SENT   ,  SSYM   , QK_LEAD,        _______, _______, _______, _______  \
   ),
 
@@ -138,8 +142,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LOWER] = LAYOUT(
     KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,                        KC_TRNS, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F12,  \
     KC_TILD, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS,                        KC_TRNS, KC_MINS, KC_DQT,  KC_ASTR, KC_BSLS, KC_QUES, KC_TRNS, \
-    KC_LCTL, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS,                        KC_BSPC, KC_UNDS, KC_QUOT, KC_EQL,  KC_PLUS, KC_ENT , KC_TRNS, \
-    KC_LSFT, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS,                        KC_DEL , KC_AMPR, KC_COLON,KC_LABK, KC_RABK, KC_ENT , KC_TRNS, \
+    KC_LCTL, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  KC_TRNS,                        KC_BSPC, KC_UNDS, KC_QUOT, KC_EQL,  KC_PLUS, KC_SCLN, KC_TRNS, \
+    KC_LSFT, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, KC_TRNS,                        KC_DEL , KC_AMPR, KC_COLON,KC_LABK, KC_RABK, KC_SLSH, KC_TRNS, \
     KC_LCTL, KC_LGUI, KC_LALT, KC_ASTR,          KC_TRNS, STNAV  , TODEF,        KC_BSPC, TONAV , KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS \
   ),
 
