@@ -45,7 +45,7 @@ enum custom_keycodes {
 #define DOTMT   MT(MOD_LALT, KC_DOT)
 #define COMMT   MT(MOD_LGUI, KC_COMM)
 #define MMT     MT(MOD_RCTL, KC_M)
-#define SLMT    MT(MOD_RALT, KC_SLASH)
+#define KMT     MT(MOD_RALT, KC_K)
 
 #define SENT    OSM(MOD_LSFT)
 
@@ -76,7 +76,7 @@ enum custom_keycodes {
 #define MRGHT LCAG(KC_RGHT)
 
 const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM ent_combo[] = { KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM ent_combo[] = { KC_N, KC_E, COMBO_END};
 const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -107,22 +107,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                `------'    `------'
  */
 [_BASE] = LAYOUT_split_3x5_3(
-        // TODO KC_SLASH could be LEAD or REPEAT
-        // TODO KC_SCLN could also be LEAD or REPEAT
-        // but both are weak
-  KC_Q,    WMT ,    FMT ,    PMT ,    KC_G,         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
+  KC_Q,    WMT ,    FMT ,    PMT ,    KC_G,         KC_J,    KC_L,    KC_U,    KC_Y,    QK_AREP,
   KC_A,    KC_R,    KC_S,    KC_T,    KC_D,         KC_H,    KC_N,    KC_E,    KC_I,    KC_O,
-  ZMT ,    XMT ,    CMT ,    VMT ,    BMT,          KC_K,    MMT ,    COMMT,   DOTMT,   SLMT,
+  ZMT ,    XMT ,    CMT ,    VMT ,    BMT,          KMT ,    MMT ,    COMMT,   DOTMT,   QK_REP,
                     QK_LEAD, GTSYM ,  NTAB,         SENT,    SSYM,    QK_LEAD
 ),
 
 [_SYMB] = LAYOUT_split_3x5_3(
   // left hand
   KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                    KC_MINS, KC_DQT,  KC_ASTR, KC_BSLS, KC_QUES,
-  // TODO KC_ENT could also be ;
-  KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                     KC_UNDS, KC_QUOT, KC_EQL,  KC_PLUS, KC_ENT ,
-  // TODO KC_ENT could also be /
-  KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD,                    KC_AMPR, KC_COLON,KC_LABK, KC_RABK, KC_ENT ,
+  KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                     KC_UNDS, KC_QUOT, KC_EQL,  KC_PLUS, KC_SCLN ,
+  KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD,                    KC_AMPR, KC_COLON,KC_LABK, KC_RABK, KC_SLSH ,
                     STNUM  , STNAV  , GTDEF  ,                    KC_BSPC, GTNAV,   KC_TRNS
 ),
 

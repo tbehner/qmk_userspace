@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,        KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_PLUS,              KC_EQL,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,      KC_NO,
   KC_NO,        KC_Q,        WMT  ,         FMT  ,   KC_P,    KC_G,    CW_LEFT,              CW_RIGHT,     KC_J,    KC_L,    KC_U ,   KC_Y ,    QK_AREP,   KC_NO,
   KC_NO,        AMT  ,       RMT  ,         SMT  ,   TMT ,    KC_D,                                        KC_H,    NMT ,    EMT ,    IMT  ,    OMT  ,     KC_NO,
-  KC_NO,        ZMT  ,       XMT  ,         CMT  ,   VMT ,    BMT,     CW_DOWN,              CW_UP,        KMT ,    MMT ,    COMMT,   DOTMT,    QK_REP  ,    KC_NO,
+  KC_NO,        ZMT  ,       XMT  ,         CMT  ,   VMT ,    BMT,     CW_DOWN,              CW_UP,        KMT ,    MMT ,    COMMT,   DOTMT,    QK_REP ,    KC_NO,
   KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, QK_LEAD,                                              QK_LEAD, KC_SPC,  KC_RALT, KC_RSFT,  KC_NO,
                                                              KC_HOME, KC_END  ,              KC_PGUP, KC_PGDN,
                                                                       KC_TAB  ,              KC_ESC,
