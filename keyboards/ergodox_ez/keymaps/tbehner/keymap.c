@@ -27,23 +27,7 @@ enum custom_keycodes {
   TRM_INS,
 };
 
-
-// UY -> Ent
-const uint16_t PROGMEM enter_combo[] = { KC_U, KC_Y, COMBO_END};
-// m, -> Ent
-const uint16_t PROGMEM lower_enter_combo[] = { KC_N, KC_E, COMBO_END};
-// LU -> Esc
-const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-// NI -> Tab
-const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-  COMBO(enter_combo, KC_ENT),
-  COMBO(lower_enter_combo, KC_ENT),
-  COMBO(tab_combo, KC_TAB),
-  COMBO(esc_combo, KC_ESC),
-};
-
+#include "common/combos.h"
 #define LAYOUT_wrapper(...) LAYOUT_ergodox_pretty(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -137,9 +121,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAV] = LAYOUT_wrapper(
   // left hand
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS,                   NAVIGATION_LEFT_UPPER,    KC_TRNS,          KC_TRNS,                    NAVIGATION_RIGHT_UPPER,    KC_TRNS,
+  KC_TRNS,                   NAVIGATION_LEFT_UPPER,    KC_TRNS,           KC_TRNS,                   NAVIGATION_RIGHT_UPPER,    KC_TRNS,
   KC_TRNS,                   NAVIGATION_LEFT_MID,                                                    NAVIGATION_RIGHT_MID,      KC_TRNS,
-  KC_TRNS,                   NAVIGATION_LEFT_LOWER,    KC_TRNS,          KC_TRNS,                    NAVIGATION_RIGHT_LOWER,    KC_TRNS,
+  KC_TRNS,                   NAVIGATION_LEFT_LOWER,    KC_TRNS,           KC_TRNS,                   NAVIGATION_RIGHT_LOWER,    KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
                                                KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS,

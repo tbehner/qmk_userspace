@@ -22,19 +22,7 @@ enum custom_keycodes {
 };
 
 
-#define F10ALT MT(MOD_LALT, KC_F10)
-#define F11GUI MT(MOD_LGUI, KC_F11)
-#define F12CTL MT(MOD_LCTL, KC_F12)
-
-const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM ent_combo[] = { KC_N, KC_E, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-  COMBO(esc_combo, KC_ESC),
-  COMBO(ent_combo, KC_ENT),
-  COMBO(tab_combo, KC_TAB),
-};
+#include "common/combos.h"
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
@@ -151,23 +139,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-
-void leader_start_user(void) {
-    // Do something when the leader key is pressed
-}
-
-void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_N)) {
-        // Leader, n => Enter
-        SEND_STRING(SS_TAP(X_ENT));
-    } else if (leader_sequence_one_key(KC_E)) {
-        // Leader, e => Esc
-        SEND_STRING(SS_TAP(X_ESC));
-    } else if (leader_sequence_two_keys(KC_W, KC_S)) {
-        // Leader, w, s => WezTerm Split vertical
-        SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_LALT) SS_DOWN(X_LSFT) SS_DELAY(100) "|" SS_UP(X_LCTL) SS_UP(X_LALT) SS_UP(X_LSFT));
-    } else if (leader_sequence_two_keys(KC_W, KC_H)) {
-        // Leader, w, s => WezTerm Split horizontal
-        SEND_STRING(SS_DOWN(X_LCTL) SS_DOWN(X_LALT) SS_DOWN(X_LSFT) SS_DELAY(100) "_" SS_UP(X_LCTL) SS_UP(X_LALT) SS_UP(X_LSFT));
-    }
-}
+#include "leader_functions/functions.c"

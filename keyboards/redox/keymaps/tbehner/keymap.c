@@ -17,8 +17,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+#include "common/sway_layer_defs.h"
+#include "common/common_keys.h"
+
 enum layers {
-   _QWERTY,
+   _BASE,
    _SYMB,
    _NAV,
    _NUMB,
@@ -38,174 +41,73 @@ enum custom_keycodes {
   WT_VSPLT,
 };
 
+#define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
+
+#include "common/combos.h"
 // Shortcut to make keymap more readable
-#define SYM_L   MO(_SYMB)
-
-#define KC_ALAS LALT_T(KC_PAST)
-#define KC_CTPL LCTL_T(KC_BSLS)
-
-#define KC_NAGR LT(_NAV, KC_GRV)
-#define KC_NAMI LT(_NAV, KC_MINS)
-
-#define KC_ADEN LT(_NUMB, KC_END)
-#define KC_ADPU LT(_NUMB, KC_PGUP)
-
-#define KC_MESC LT(_NAV, KC_ESC)
-#define KC_SBSP LT(_SYMB, KC_BSPC)
-#define KC_AENT LT(_NUMB, KC_ENT)
-
-#define KC_SYMB TT(_SYMB)
-#define KC_ADJ  TT(_NUMB)
-
-// _QWERTY ->
-// _SYMB -> Symbol Layer
-// _NAV -> Navigation Layer
-// _NUMB -> Number / Function Layer
-// _SYMB -> Symbol Layer
-
-#define PRAISESC LT(_SYMB, KC_ESC)
-#define PNUMBENT LT(_NUMB, KC_ENT)
-#define PSYMBSP  LT(_SYMB, KC_BSPC)
-
-#define GTDEF TO(_QWERTY)
-#define GTSYM OSL(_SYMB)
-#define GTNAV OSL(_NAV)
-#define GTNUM OSL(_NUMB)
-
-#define SENT    OSM(MOD_LSFT)
-#define SSYM    LT(_NUMB, KC_SPC)
-
-#define ATAB      OSM(MOD_LCTL)
-
-#define NMBRS MO(_NUMB)
-#define RAISE MO(_NAV)
-#define LOWER MO(_SYMB)
-
-#define TABNEXT LCTL(KC_TAB)
-#define TABPREV RCS(KC_TAB)
-#define PSNEXT  LGUI(KC_TAB)
-#define PSPREV  LSG(KC_TAB)
-
-#define NSYM LT(SYMB, KC_N)
-#define TSYM LT(SYMB, KC_T)
-
-#define SNAV LT(NAV, KC_S)
-#define ENAV LT(NAV, KC_E)
-
-/// Left upper row
-#define FMT MT(MOD_LGUI | MOD_LSFT, KC_F)
-#define WMT MT(MOD_LGUI | MOD_LSFT, KC_W)
-
-/// Left lower row
-#define ZMT  MT(MOD_LSFT, KC_Z)
-#define XMT  MT(MOD_LALT, KC_X)
-#define CMT  MT(MOD_LGUI, KC_C)
-#define VMT  MT(MOD_LCTL, KC_V)
-#define BMT  MT(MOD_LALT | MOD_LSFT, KC_B)
-
-#define SFTGUI MT(MOD_LGUI | MOD_LSFT, KC_SPC)
-
-/// Right lower row
-#define DOTMT   MT(MOD_LALT, KC_DOT)
-#define COMMT   MT(MOD_LGUI, KC_COMM)
-
-#define MMT     MT(MOD_RCTL, KC_M)
-#define KMT    MT(MOD_RALT, KC_K)
-#define SLMT    MT(MOD_RALT, KC_SLASH)
-
-#define STNAV TO(_NAV)
-#define STNUM TO(_NUMB)
-#define COPY LGUI(KC_C)
-#define PASTE LGUI(KC_V)
-
-#define MLEFT LCAG(KC_LEFT)
-#define MRGHT LCAG(KC_RGHT)
-
-#define PSNEXT  LGUI(KC_TAB)
-#define PSPREV  LSG(KC_TAB)
-#define ANEXT LALT(KC_TAB)
-#define APREV LSA(KC_TAB)
-
-
-// UY -> Ent
-const uint16_t PROGMEM enter_combo[] = { KC_U, KC_Y, COMBO_END};
-// m, -> Ent
-const uint16_t PROGMEM lower_enter_combo[] = { KC_N, KC_E, COMBO_END};
-// LU -> Esc
-const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-// NI -> Tab
-const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-  COMBO(enter_combo, KC_ENT),
-  COMBO(lower_enter_combo, KC_ENT),
-  COMBO(tab_combo, KC_TAB),
-  COMBO(esc_combo, KC_ESC),
-};
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QWERTY] = LAYOUT(
+  [_BASE] = LAYOUT_wrapper(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                                            _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_Q    ,WMT     ,FMT     ,KC_P    ,KC_G    ,CW_LEFT ,                          CW_RIGHT,KC_J    ,KC_L    ,KC_U    ,KC_Y    ,QK_AREP ,_______ ,
+      _______,                   BASE_LEFT_UPPER,          _______,                            _______,                      BASE_RIGHT_UPPER,       _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_A    ,KC_R    ,KC_S    ,KC_T    ,KC_D    ,CW_DOWN ,                          CW_UP   ,KC_H    ,KC_N    ,KC_E    ,KC_I    ,KC_O    ,_______ ,
+      _______,                   BASE_LEFT_MID,            _______,                            _______,                      BASE_RIGHT_MID,         _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,ZMT     ,XMT     ,CMT     ,VMT     ,BMT     ,KC_ADPU ,KC_PGDN ,        KC_HOME ,KC_ADEN ,KMT     ,MMT     ,COMMT   ,DOTMT   ,QK_REP  ,_______ ,
+      _______,                   BASE_LEFT_LOWER,          _______,  _______,        _______,  _______,                      BASE_RIGHT_LOWER,       _______, \
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______ ,_______ ,_______ ,    QK_LEAD  ,    GTSYM   ,ATAB    ,        SENT    , SSYM   ,    QK_LEAD ,     _______ ,_______ ,_______ ,KC_RALT
+     _______ ,_______ ,_______ ,_______ ,    QK_LEAD  ,    GTSYM   ,NTAB    ,        SSSFT   , SSYM   ,    QK_LEAD ,     _______ ,_______ ,_______ ,KC_RALT
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
                      ),
 
-  [_SYMB] = LAYOUT(
+  [_SYMB] = LAYOUT_wrapper(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______ ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_EXLM ,KC_AT   ,KC_LCBR ,KC_RCBR ,KC_PIPE ,_______ ,                          _______ ,KC_MINS ,KC_DQT	,KC_ASTR ,KC_BSLS ,KC_QUES ,XXXXXXX ,
+     _______,                 SYMBOL_LEFT_UPPER,           _______,                            _______,                    SYMBOL_RIGHT_UPPER,       _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_HASH ,KC_DLR  ,KC_LPRN ,KC_RPRN ,KC_GRV  ,_______ ,                          _______ ,KC_UNDS ,KC_QUOT ,KC_EQL  ,KC_PLUS ,KC_SCLN ,XXXXXXX ,
+     _______,                 SYMBOL_LEFT_MID,             _______,                            _______,                    SYMBOL_RIGHT_MID,         _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_PERC ,KC_CIRC ,KC_LBRC ,KC_RBRC ,KC_TILD ,_______ ,_______ ,        _______ ,_______ ,KC_AMPR ,KC_COLON,KC_LABK ,KC_RABK ,KC_SLSH ,XXXXXXX ,
+     _______,                 SYMBOL_LEFT_LOWER,           _______, _______,          _______, _______,                    SYMBOL_RIGHT_LOWER,       _______, \
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
      _______ ,_______ ,_______ ,_______ ,     _______ ,    STNAV   ,GTDEF   ,        KC_BSPC ,GTNAV   ,    _______ ,     _______ ,_______ ,_______ ,XXXXXXX
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
-  [_NAV] = LAYOUT(
+  [_NAV] = LAYOUT_wrapper(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,                                            _______ ,_______ ,_______ ,_______ ,_______ ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,_______ ,KC_TRNS ,KC_TRNS ,CW_UP   ,KC_TRNS ,_______ ,                          _______ ,KC_HOME ,KC_PGDN ,KC_PGUP ,KC_END  ,_______ ,_______ ,
+      _______,                   NAVIGATION_LEFT_UPPER,     KC_MS_WH_UP,                       _______,                  NAVIGATION_RIGHT_UPPER,     _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,COPY    ,_______ ,CW_LEFT ,CW_DOWN ,CW_RIGHT,_______ ,                          _______ ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RGHT ,_______ ,_______ ,
+      _______,                   NAVIGATION_LEFT_MID,       KC_MS_WH_DOWN,                     _______,                  NAVIGATION_RIGHT_MID,       _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_LSFT ,KC_LALT ,KC_LGUI ,KC_LCTL ,KC_TRNS ,_______ ,_______ ,        _______ ,_______ ,PSPREV  ,TABPREV ,TABNEXT ,PSNEXT  ,_______ ,_______ ,
+      _______,                   NAVIGATION_LEFT_LOWER,     _______, _______,         _______,  KC_DEL,                  NAVIGATION_RIGHT_LOWER,     _______, \
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______ ,_______ ,_______ ,     _______ ,    GTDEF   ,_______ ,        KC_DEL  ,KC_ENT ,     _______ ,     _______ ,_______ ,_______ ,_______
+     _______ ,_______ ,_______ ,_______ ,     _______ ,    GTNUM   ,GTDEF   ,        KC_DEL  ,KC_ENT ,     _______ ,     _______ ,_______ ,_______ ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 
-  [_NUMB] = LAYOUT(
+  [_NUMB] = LAYOUT_wrapper(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______ ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,_______ ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,_______ ,_______ ,                          _______ ,KC_SPC  ,KC_7    ,KC_8    ,KC_9    ,KC_UNDS ,_______ ,
+      _______,                 NUMBER_LEFT_UPPER,          _______,                            _______,                    NUMBER_RIGHT_UPPER,       _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_F5   ,KC_F6   ,KC_F7   ,KC_F8   ,SFTGUI  ,_______ ,                          _______ ,KC_COMM ,KC_4    ,KC_5    ,KC_6    ,KC_MINS ,_______ ,
+      _______,                 NUMBER_LEFT_MID,            _______,                            _______,                    NUMBER_RIGHT_MID,         _______, \
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______ ,KC_F9   ,KC_F10  ,KC_F11  ,KC_F12  ,KC_SPC  ,_______ ,_______ ,        _______ ,_______ ,KC_0    ,KC_1    ,KC_2    ,KC_3    ,KC_DOT  ,_______ ,
+      _______,                 NUMBER_LEFT_LOWER,          _______,  _______,         _______, _______,                    NUMBER_RIGHT_LOWER,       _______, \
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     _______ ,_______ ,_______ ,_______ ,     _______ ,    GTDEF   ,_______ ,        _______ ,GTDEF   ,    _______ ,     _______ ,_______ ,_______ ,_______
+     _______ ,_______ ,_______ ,_______ ,     GTSYM   ,    GTDEF   ,_______ ,        _______ ,GTDEF   ,    _______ ,     _______ ,_______ ,_______ ,_______
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
-        case _QWERTY:
+        case _BASE:
             set_led_off;
             break;
         case _SYMB:

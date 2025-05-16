@@ -38,6 +38,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define COMBO_COUNT 4
 #define COMBO_TERM 30
-#define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 250
 #define LEADER_PER_KEY_TIMING

@@ -34,21 +34,9 @@ enum custom_keycodes {
 /// new home row modifiers
 ///
 #define TB_Q KC_Q, WMT
-
-const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM ent_combo[] = { KC_N, KC_E, COMBO_END};
-const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-  COMBO(esc_combo, KC_ESC),
-  COMBO(ent_combo, KC_ENT),
-  COMBO(tab_combo, KC_TAB),
-  // TODO COMBO(repeat_combo)?
-  // TODO COMBO(leader_combo)?
-  //
-};
-
 #define LAYOUT_wrapper(...) LAYOUT_split_3x5_3(__VA_ARGS__)
+
+#include "common/combos.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -85,23 +73,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAV] = LAYOUT_wrapper(
   // left hand
-  NAVIGATION_LEFT_UPPER, NAVIGATION_RIGHT_UPPER,
-  NAVIGATION_LEFT_MID,   NAVIGATION_RIGHT_MID,
-  NAVIGATION_LEFT_LOWER, NAVIGATION_RIGHT_LOWER,
+                      NAVIGATION_LEFT_UPPER,                     NAVIGATION_RIGHT_UPPER,
+                      NAVIGATION_LEFT_MID,                       NAVIGATION_RIGHT_MID,
+                      NAVIGATION_LEFT_LOWER,                     NAVIGATION_RIGHT_LOWER,
                     KC_TRNS, GTNUM  , GTDEF  ,                    KC_DEL , KC_ENT, KC_TRNS
 ),
 
 [_NUMB] = LAYOUT_wrapper(
   // left hand
-  NUMBER_LEFT_UPPER, NUMBER_RIGHT_UPPER,
-  NUMBER_LEFT_MID  , NUMBER_RIGHT_MID  ,
-  NUMBER_LEFT_LOWER, NUMBER_RIGHT_LOWER,
+                NUMBER_LEFT_UPPER,                            NUMBER_RIGHT_UPPER,
+                NUMBER_LEFT_MID  ,                            NUMBER_RIGHT_MID  ,
+                NUMBER_LEFT_LOWER,                            NUMBER_RIGHT_LOWER,
                    KC_TRNS,  GTSYM,   GTDEF  ,           KC_TRNS, GTDEF,   KC_TRNS
 ),
 
 [_SWAY] = LAYOUT_split_3x5_3(
   // left hand
-
   MWS1 ,  MWS2,     MWS3,    MWS4,    MWS5,            MWS6,   MWS7,  MWS8,  MWS9,    MWS10,
   MWLEFT, MWDOWN,   MWUP,    MWRIGHT, KC_NO,           FLEFT,  FDOWN, FUP,   FRIGHT,  KC_NO,
   SSHOR,  SSVER,   SSTAB,    SSSTA,   SSTSP,           SPARE,  SSFUL, KC_NO, KC_NO,   KC_NO,

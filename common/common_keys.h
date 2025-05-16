@@ -50,6 +50,10 @@
 #define MRGHT LCAG(KC_RGHT)
 
 
+#define F10ALT MT(MOD_LALT, KC_F10)
+#define F11GUI MT(MOD_LGUI, KC_F11)
+#define F12CTL MT(MOD_LCTL, KC_F12)
+
 #ifdef __APPLE__
 #define CUT LGUI(KC_X)
 #define COPY LGUI(KC_C)
@@ -89,6 +93,6 @@
 #define NUMBER_RIGHT_UPPER      KC_SPC , KC_7,    KC_8,    KC_9,    KC_UNDS
 #define NUMBER_LEFT_MID         KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_TRNS
 #define NUMBER_RIGHT_MID        KC_COMM, KC_4,    KC_5,    KC_6,    KC_MINS
-#define NUMBER_LEFT_LOWER       KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_SPC
+#define NUMBER_LEFT_LOWER       KC_F9,   F10ALT,  F11GUI,  F12CTL,  KC_SPC
 #define NUMBER_RIGHT_LOWER      KC_0,    KC_1,    KC_2,    KC_3,    KC_DOT
 
