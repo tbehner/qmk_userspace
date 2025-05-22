@@ -1,19 +1,20 @@
 #include QMK_KEYBOARD_H
 
-#include "common/common_keys.h"
 
-enum layers {
-  _BASE,
-  _NUMB,
-  _SYMB,
-  _NAV,
+enum layer_names {
+    _BASE,
+    _LOWER,
+    _RAISE,
+    _ADJUST,
+    _NUMB,
+    _SYMB,
+    _NAV
 };
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  SYMB,
-  NUMB,
-  NAV,
+  LOWER = SAFE_RANGE,
+  RAISE,
+  ADJUST,
   CW_LEFT,
   CW_RIGHT,
   CW_UP,
@@ -21,24 +22,25 @@ enum custom_keycodes {
   AW_SWITCH,
 };
 
-
+#include "common/common_keys.h"
 #include "common/combos.h"
 
+#define EISU LALT(KC_GRV)
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Qwerty
    * ,----------------------------------------------------------------------------------------------------------------------.
-   * |      |   1  |   2  |   3  |   4  |   5  |   [  |                    |   ]  |   6  |   7  |   8  |   9  |   0  |      |
+   * | ESC  |   1  |   2  |   3  |   4  |   5  |   [  |                    |   ]  |   6  |   7  |   8  |   9  |   0  |Pscree|
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
-   * |      |   Q  |   W  |   E  |   R  |   T  | WinL |                    | WinR |   Y  |   U  |   I  |   O  |   P  |      |
+   * |  `   |   Q  |   W  |   E  |   R  |   T  |   -  |                    |   =  |   Y  |   U  |   I  |   O  |   P  |  \   |
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
-   * |      |   A  |   S  |   D  |   F  |   G  | WinD |                    | WinU |   H  |   J  |   K  |   L  |   ;  |      |
+   * | Tab  |   A  |   S  |   D  |   F  |   G  |  Del |                    | Bksp |   H  |   J  |   K  |   L  |   ;  |  "   |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * |      |   Z  |   X  |   C  |   V  |   B  | Space|                    | Enter|   N  |   M  |   ,  |   .  |   /  |      |
+   * | Shift|   Z  |   X  |   C  |   V  |   B  | Space|                    | Enter|   N  |   M  |   ,  |   .  |   /  | Shift|
    * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
-   * |      |      |      |      |||||||| Lower| Space|  Del |||||||| Bksp | Enter| Raise|||||||| Left | Down |  Up  | Right|
+   * | Ctrl |  GUI |  ALt | EISU |||||||| Lower| Space|  Del |||||||| Bksp | Enter| Raise|||||||| Left | Down |  Up  | Right|
    * ,----------------------------------------------------------------------------------------------------------------------.
    */
   [_BASE] = LAYOUT_wrapper(
@@ -49,20 +51,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, QK_LEAD,          GTSYM  , NTAB   , _______ ,           _______ , SSSFT ,  SSYM ,           QK_LEAD , _______, _______,_______  \
   ),
 
-
-  /* Numbers
-   * ,----------------------------------------------------------------------------------------------------------------------.
-   * |      |      |      |      |      |      |      |                    |      |      |      |      |      |      |      |
-   * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * |      | Reset|RGB ON|  MODE|  HUE-|  HUE+|      |                    |      |  SAT-|  SAT+|  VAL-|  VAL+|      |      |
-   * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * |      |      | BL ON|  BRTG|  INC |   DEC|      |                    |      |      |      |      |      |      |      |
-   * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |      |      |                    |      |      |      |      |      |      |      |
-   * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
-   * |      |      |      |      ||||||||      |      |      ||||||||      |      |      ||||||||      |      |      |      |
-   * ,----------------------------------------------------------------------------------------------------------------------.
-   */
   [_NUMB] = LAYOUT_wrapper(
     _______, _______, _______, _______, _______, _______,_______,                       _______, _______, _______, _______, _______, _______, _______, \
     _______,                 NUMBER_LEFT_UPPER,          _______,                       _______,                    NUMBER_RIGHT_UPPER,       _______, \
@@ -70,6 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                 NUMBER_LEFT_LOWER,          _______,                       _______,                    NUMBER_RIGHT_LOWER,       _______, \
     _______, _______, _______, _______,          GTSYM  ,GTDEF  ,_______,       _______,_______, GTDEF  ,          _______, _______, _______, _______  \
   ),
+
 
   /* Symbols:
    * ,----------------------------------------------------------------------------------------------------------------------.
@@ -112,29 +101,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                   NAVIGATION_LEFT_LOWER,      _______,                        KC_DEL,                   NAVIGATION_RIGHT_LOWER,     _______, \
     _______, _______, _______, _______,          GTNUM   , GTDEF  ,_______,        KC_DEL, KC_DEL, KC_ENT,           _______,  _______, _______, _______   \
   ),
-
 };
 
+#ifdef AUDIO_ENABLE
+float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
+#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
-    switch (keycode) {
-      case AW_SWITCH:
-        SEND_STRING(SS_DOWN(X_LCTL) "c" SS_UP(X_LCTL) "w");
-        return false;
-      case CW_LEFT:
+  switch (keycode) {
+    case LOWER:
+      if (record->event.pressed) {
+        layer_on(_LOWER);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      } else {
+        layer_off(_LOWER);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      }
+      return false;
+      break;
+    case RAISE:
+      if (record->event.pressed) {
+        layer_on(_RAISE);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      } else {
+        layer_off(_RAISE);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      }
+      return false;
+      break;
+    case ADJUST:
+      if (record->event.pressed) {
+        layer_on(_ADJUST);
+      } else {
+        layer_off(_ADJUST);
+      }
+      return false;
+      break;
+  case CW_LEFT:
         SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "h");
         return false;
-      case CW_RIGHT:
+  case CW_RIGHT:
         SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "l");
         return false;
-      case CW_DOWN:
+  case CW_DOWN:
         SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "j");
         return false;
-      case CW_UP:
+  case CW_UP:
         SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "k");
         return false;
-    }
   }
   return true;
 }

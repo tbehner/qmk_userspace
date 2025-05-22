@@ -31,12 +31,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_LEFT
 #define MASTER_RIGHT
 // #define EE_HANDS
-// #define TAPPING_TERM 200
 #define PERMISSIVE_HOLD
+#define TAPPING_TERM 200
 //#define IGNORE_MOD_TAP_INTERRUPT
 
 
-#define COMBO_COUNT 4
+#define COMBO_COUNT 3
 #define COMBO_TERM 30
-#define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 250
+#define LEADER_PER_KEY_TIMING
