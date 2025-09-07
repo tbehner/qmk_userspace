@@ -10,7 +10,7 @@
 #define XMT  MT(MOD_LALT, KC_X)
 #define CMT  MT(MOD_LGUI, KC_C)
 #define VMT  MT(MOD_LCTL, KC_V)
-#define ZMT  MT(MOD_RSFT, KC_Z)
+#define ZMT  MT(MOD_LSFT, KC_Z)
 
 /// Right lower row
 #define DOTMT   MT(MOD_LALT, KC_DOT)
@@ -32,9 +32,6 @@
 
 #define STNAV TO(_NAV)
 #define STNUM TO(_NUMB)
-
-#define COPY LGUI(KC_C)
-#define PASTE LGUI(KC_V)
 
 #define TABNEXT LCTL(KC_TAB)
 #define TABPREV RCS(KC_TAB)
