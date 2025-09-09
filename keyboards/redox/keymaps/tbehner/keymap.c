@@ -105,25 +105,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-        case _BASE:
-            set_led_off;
-            break;
-        case _SYMB:
-            set_led_green;
-            break;
-        case _NAV:
-            set_led_blue;
-            break;
-        case _NUMB:
-            set_led_red;
-            break;
-        default:
-            break;
-    }
-  return state;
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     switch (get_highest_layer(state)) {
+//         case _BASE:
+//             set_led_off;
+//             break;
+//         case _SYMB:
+//             set_led_green;
+//             break;
+//         case _NAV:
+//             set_led_blue;
+//             break;
+//         case _NUMB:
+//             set_led_red;
+//             break;
+//         default:
+//             break;
+//     }
+//   return state;
+// }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {

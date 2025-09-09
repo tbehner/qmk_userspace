@@ -39,7 +39,7 @@ BACKLIGHT_SUPPORTED = no
 
 # MOUSE_SHARED_EP = no
 
-DEFAULT_FOLDER = ergodox_ez/base
+# DEFAULT_FOLDER = ergodox_ez/base
 
 COMBO_ENABLE = yes
 LEADER_ENABLE = yes
