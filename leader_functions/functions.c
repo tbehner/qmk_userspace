@@ -49,4 +49,9 @@ void leader_end_user(void) {
     } else if (leader_sequence_two_keys(KC_T, KC_K)) {
         SEND_STRING(SS_LSFT(SS_LGUI(SS_TAP(X_0))));
     }
+
+    else if (leader_sequence_one_key(KC_C)){
+        SEND_STRING(SS_TAP(X_ENT));
+    }
+
 }

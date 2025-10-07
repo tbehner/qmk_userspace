@@ -1,9 +1,13 @@
 #pragma once
 
 /// Left upper row
-#define PMT   MT(MOD_LCTL | MOD_LSFT, KC_P)
-#define FMT   MT(MOD_LGUI | MOD_LSFT, KC_F)
-#define WMT   MT(MOD_LALT | MOD_LSFT, KC_W)
+//#define PMT   MT(MOD_LCTL | MOD_LSFT, KC_P)
+//#define FMT   MT(MOD_LGUI | MOD_LSFT, KC_F)
+//#define WMT   MT(MOD_LALT | MOD_LSFT, KC_W)
+
+#define PMT KC_P
+#define FMT KC_F
+#define WMT KC_W
 
 /// Left lower row
 #define BMT  MT(MOD_LALT | MOD_LSFT, KC_B)
