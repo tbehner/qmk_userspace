@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define IGNORE_MOD_TAP_INTERRUPT
 
 
-#define COMBO_COUNT 7
+#define COMBO_COUNT 10
 
 #define COMBO_TERM 30
 #define LEADER_TIMEOUT 250
