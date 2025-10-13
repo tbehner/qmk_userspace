@@ -1,19 +1,23 @@
 #include QMK_KEYBOARD_H
 
-
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _PYCHARM 3
-// #define _ADJUST 16
-
-enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
-  LOWER,
-  RAISE,
-  PYCHARM,
-  // ADJUST,
+enum layers {
+    _QWERTY,
+    _LOWER,
+    _RAISE,
+    _PYCHARM
 };
+
+// enum custom_keycodes {
+//   QWERTY = SAFE_RANGE,
+//   LOWER,
+//   RAISE,
+//   PYCHARM,
+//   // ADJUST,
+// };
+
+#define LOWER    MO(_LOWER)
+#define RAISE    MO(_RAISE)
+#define PYCHARM  MO(_PYCHARM)
 
 #define EISU LALT(KC_GRV)
 #define WS_UP LCA(KC_UP)
@@ -86,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_RAISE] = LAYOUT(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, WD_UP,   KC_TRNS, WS_UP  , KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_PGUP, KC_UP  , KC_PGDN, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, WD_UP,   KC_TRNS, WS_UP  , KC_TRNS, KC_TRNS,                        KC_TRNS, KC_PSCR, KC_PGUP, KC_UP  , KC_PGDN, KC_TRNS, KC_TRNS,
     KC_TRNS, MO_LE,   WD_DN,   MO_RE,   WS_DN  , KC_TRNS, KC_TRNS,                        KC_TRNS, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END , KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, SP_LE  , W_MAX  , SP_RE  , KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS,KC_TRNS, KC_TRNS,          W_MIN  , KC_TRNS, KC_TRNS, KC_TRNS
