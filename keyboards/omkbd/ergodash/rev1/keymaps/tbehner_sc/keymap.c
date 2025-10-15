@@ -96,9 +96,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [_NAV] = LAYOUT_wrapper(
     KC_F11 , KC_F1,   KC_F2  , KC_F3,   KC_F4,   KC_F5,   _______,                        _______, KC_F6,   KC_F7,   KC_F8  ,  KC_F9,   KC_F10,  KC_F12,  \
-    _______,                   NAVIGATION_LEFT_UPPER,     KC_MS_WH_UP,                    _______,                   NAVIGATION_RIGHT_UPPER,     _______, \
-    _______,                   NAVIGATION_LEFT_MID,       KC_MS_WH_DOWN,                  _______,                   NAVIGATION_RIGHT_MID,       _______, \
-    _______,                   NAVIGATION_LEFT_LOWER,      _______,                        KC_DEL,                   NAVIGATION_RIGHT_LOWER,     _______, \
+    _______,                   NAVIGATION_LEFT_UPPER,     _______,                        _______,                   NAVIGATION_RIGHT_UPPER,     _______, \
+    _______,                   NAVIGATION_LEFT_MID,       _______,                        _______,                   NAVIGATION_RIGHT_MID,       _______, \
+    _______,                   NAVIGATION_LEFT_LOWER,     _______,                         KC_DEL,                   NAVIGATION_RIGHT_LOWER,     _______, \
     _______, _______, _______, _______,          GTNUM   , GTDEF  ,_______,        KC_DEL, KC_DEL, KC_ENT,           _______,  _______, _______, _______   \
   ),
 };

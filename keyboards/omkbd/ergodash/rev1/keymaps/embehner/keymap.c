@@ -89,8 +89,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,----------------------------------------------------------------------------------------------------------------------.
    */
   [_RAISE] = LAYOUT(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, WD_UP,   KC_TRNS, WS_UP  , KC_TRNS, KC_TRNS,                        KC_TRNS, KC_PSCR, KC_PGUP, KC_UP  , KC_PGDN, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PSCR,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, WD_UP,   KC_TRNS, WS_UP  , KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_PGUP, KC_UP  , KC_PGDN, KC_TRNS, KC_TRNS,
     KC_TRNS, MO_LE,   WD_DN,   MO_RE,   WS_DN  , KC_TRNS, KC_TRNS,                        KC_TRNS, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END , KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, SP_LE  , W_MAX  , SP_RE  , KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS,       KC_TRNS,KC_TRNS, KC_TRNS,          W_MIN  , KC_TRNS, KC_TRNS, KC_TRNS
