@@ -28,6 +28,7 @@
 #define NTAB  OSM(MOD_LCTL)//OSL(STICKY_MDIA)
 #define SSYM  LT(_NUMB, KC_SPC)
 
+#define GTMSE TO(_MOUSE)
 #define GTDEF TO(_BASE)
 #define GTSYM OSL(_SYMB)
 #define GTNAV OSL(_NAV)
@@ -67,7 +68,7 @@
 
 // BASE LAYER  ---- COLEMAK
 #define BASE_LEFT_UPPER         KC_Q,    WMT ,    FMT ,    PMT ,    KC_G
-#define BASE_RIGHT_UPPER        KC_J,    KC_L,    KC_U,    KC_Y,    QK_AREP
+#define BASE_RIGHT_UPPER        KC_J,    KC_L,    KC_U,    KC_Y,    GTMSE
 #define BASE_LEFT_MID           KC_A,    KC_R,    KC_S,    KC_T,    KC_D
 #define BASE_RIGHT_MID          KC_H,    KC_N,    KC_E,    KC_I,    KC_O
 #define BASE_LEFT_LOWER         ZMT ,    XMT ,    CMT ,    VMT ,    BMT
@@ -97,3 +98,24 @@
 #define NUMBER_LEFT_LOWER       KC_F9,   F10ALT,  F11GUI,  F12CTL,  KC_SPC
 #define NUMBER_RIGHT_LOWER      KC_0,    KC_1,    KC_2,    KC_3,    KC_DOT
 
+
+#define MOUSE_LEFT_UPPER     KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+#define MOUSE_LEFT_MID       KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+#define MOUSE_LEFT_LOWER     KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+#define MOUSE_RIGHT_UPPER    OM_W_U ,   OM_BTNS,    OM_U   ,   OM_DBLS,    OM_FAST
+#define MOUSE_RIGHT_MID      OM_W_D ,   OM_L   ,    OM_D   ,   OM_R   ,    OM_SLOW
+#define MOUSE_RIGHT_LOWER    OM_RELS,   OM_HLDS,    OM_SEL1,   OM_SEL2,    OM_SEL3
+
+
+
+
+
+
+/*
+KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TR  NS,   KC_TRNS
+KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+KC_TRNS ,  KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+KC_TRNS,   KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_TRNS
+*/

@@ -27,10 +27,14 @@
 #define SRELOAD LSG(KC_R)
 #define SKILL   LSG(KC_Q)
 
+// horizontal split
 #define SSHOR   LGUI(KC_B)
+// vertical split
 #define SSVER   LGUI(KC_V)
+// stacking windows
 #define SSSTA   LGUI(KC_S)
-#define SSTAB   LGUI(KC_T)
+// tabbed windows
+#define SSTAB   LGUI(KC_W)
 // Toggle split vertical <-> horizontal
 #define SSTSP   LGUI(KC_E)
 // fullscreen

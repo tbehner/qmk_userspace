@@ -108,49 +108,21 @@ float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case LOWER:
-      if (record->event.pressed) {
-        layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case RAISE:
-      if (record->event.pressed) {
-        layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case ADJUST:
-      if (record->event.pressed) {
-        layer_on(_ADJUST);
-      } else {
-        layer_off(_ADJUST);
-      }
-      return false;
-      break;
-  case CW_LEFT:
-        SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "h");
-        return false;
-  case CW_RIGHT:
-        SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "l");
-        return false;
-  case CW_DOWN:
-        SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "j");
-        return false;
-  case CW_UP:
-        SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "k");
-        return false;
-  }
-  return true;
+    switch (keycode) {
+        case CW_LEFT:
+            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "h");
+            return false;
+        case CW_RIGHT:
+            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "l");
+            return false;
+        case CW_DOWN:
+            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "j");
+            return false;
+        case CW_UP:
+            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "k");
+            return false;
+    }
+    return true;
 }
 
 #include "leader_functions/functions.c"
