@@ -7,6 +7,7 @@ enum layers {
     _SYMB, // Symbols
     _NAV, // navigation Layer
     _NUMB, // Number Layer
+    _MOUSE, // I will do something usefull with this layer some day
 };
 
 enum custom_keycodes {
@@ -60,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, QK_LEAD,                                              QK_LEAD, KC_SPC,  KC_RALT, KC_RSFT,  KC_NO,
                                                              KC_HOME, KC_END  ,              KC_PGUP, KC_PGDN,
                                                                       KC_TAB  ,              KC_ESC,
-                                                     GTSYM, NTAB,     KC_TAB  ,              KC_ESC, SSSFT , SSYM
+                                                     GTSYM, NTAB,     KC_TAB  ,              LCA(KC_DEL), SSSFT , SSYM
 ),
 
 
@@ -164,6 +165,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_TRNS,     KC_TRNS,
                                       GTSYM,   GTDEF  , KC_TRNS,     KC_TRNS, KC_TRNS, GTDEF
 ),
+
+[_MOUSE] = LAYOUT_wrapper(
+  // left hand
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS,                  NUMBER_LEFT_UPPER,          KC_TRNS,     KC_TRNS,                   NUMBER_RIGHT_UPPER,        KC_TRNS,
+  KC_TRNS,                  NUMBER_LEFT_MID,                                                    NUMBER_RIGHT_MID,          KC_TRNS,
+  KC_TRNS,                  NUMBER_LEFT_LOWER,          KC_TRNS,     KC_TRNS,                   NUMBER_RIGHT_LOWER,        KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+
+                                               KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
+                                                        KC_TRNS,     KC_TRNS,
+                                      GTSYM,   GTDEF  , KC_TRNS,     KC_TRNS, KC_TRNS, GTDEF
+),
+
 
 };
 
