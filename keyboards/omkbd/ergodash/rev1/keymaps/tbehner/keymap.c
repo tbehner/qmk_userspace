@@ -7,7 +7,8 @@ enum layers {
   _NUMB,
   _SYMB,
   _NAV,
-  _MOUSE,
+  _ZELLIJ,
+  // _MOUSE,
 };
 
 enum custom_keycodes {
@@ -15,7 +16,8 @@ enum custom_keycodes {
   SYMB,
   NUMB,
   NAV,
-  MOUSE,
+  // MOUSE,
+  ZELLIJ,
   CW_LEFT,
   CW_RIGHT,
   CW_UP,
@@ -47,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                   BASE_LEFT_UPPER,                    _______,                              _______,                      BASE_RIGHT_UPPER,          _______, \
     COPY   ,                   BASE_LEFT_MID,                      _______,                              _______,                      BASE_RIGHT_MID,            _______, \
     PASTE  ,                   BASE_LEFT_LOWER,                    _______,                              _______,                      BASE_RIGHT_LOWER,          _______, \
-    _______, _______, _______, QK_LEAD,                   GTSYM ,  NTAB   , _______,            _______,  SSSFT ,  SSYM,     QK_LEAD, _______, _______, _______  \
+    _______, _______, _______, GTZIJ,                     GTSYM ,  NTAB   , _______,            _______,  SSSFT ,  SSYM,     QK_LEAD, _______, _______, _______  \
   ),
 
   /* Numbers
@@ -113,13 +115,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           GTNUM  ,GTDEF , _______,      _______,  KC_DEL , KC_ENT ,         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS   \
   ),
 
-  [_MOUSE] = LAYOUT_wrapper(
-    KC_F11 , KC_F1,   KC_F2  , KC_F3,   KC_F4,   KC_F5,   KC_TRNS,                        KC_TRNS, KC_F6,   KC_F7,   KC_F8  ,  KC_F9,   KC_F10,  KC_F12,  \
-    _______,                   MOUSE_LEFT_UPPER,     _______,                             _______,                   MOUSE_RIGHT_UPPER,     _______, \
-    _______,                   MOUSE_LEFT_MID,       _______,                             _______,                   MOUSE_RIGHT_MID,       _______, \
-    _______,                   MOUSE_LEFT_LOWER,     _______,                              KC_DEL,                   MOUSE_RIGHT_LOWER,     _______, \
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           GTNUM  ,GTDEF , _______,      _______,  KC_DEL , KC_ENT ,         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS   \
-  ),
+  [_ZELLIJ] = LAYOUT_wrapper(
+          KC_F11 , KC_F1,   KC_F2  , KC_F3,   KC_F4,   KC_F5,   KC_TRNS,                            KC_TRNS, KC_F6,   KC_F7,   KC_F8  ,  KC_F9,   KC_F10,  KC_F12,  \
+          _______,                   ZELLIJ_LEFT_UPPER,     _______,                                _______,                  ZELLIJ_RIGHT_UPPER,     _______, \
+          _______,                   ZELLIJ_LEFT_MID,       _______,                                _______,                  ZELLIJ_RIGHT_MID,       _______, \
+          _______,                   ZELLIJ_LEFT_LOWER,     _______,                                KC_DEL,                   ZELLIJ_RIGHT_LOWER,     _______, \
+          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,               GTNUM  ,GTDEF , _______,      _______,  KC_DEL , KC_ENT ,         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS   \
+          ),
+
+
 };
 
 

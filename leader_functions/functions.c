@@ -50,6 +50,13 @@ void leader_end_user(void) {
         SEND_STRING(SS_LSFT(SS_LGUI(SS_TAP(X_0))));
     }
 
+    else if (leader_sequence_one_key(KC_R)) {
+        SEND_STRING(SS_LGUI(SS_TAP(X_LEFT)));
+    }
+    else if (leader_sequence_one_key(KC_S)) {
+        SEND_STRING(SS_LGUI(SS_TAP(X_RIGHT)));
+    }
+
     else if (leader_sequence_one_key(KC_C)){
         SEND_STRING(SS_TAP(X_ENT));
     }
