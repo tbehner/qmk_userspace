@@ -7,7 +7,7 @@ enum layers {
     _SYMB, // Symbols
     _NAV, // navigation Layer
     _NUMB, // Number Layer
-    _MOUSE, // I will do something usefull with this layer some day
+    // _MOUSE, // I will do something usefull with this layer some day
 };
 
 enum custom_keycodes {
@@ -26,10 +26,17 @@ enum custom_keycodes {
   CW_DOWN,
   AW_SWITCH,
   TRM_INS,
+  JIGGLER,
 };
 
 #include "common/combos.h"
 #define LAYOUT_wrapper(...) LAYOUT_ergodox_pretty(__VA_ARGS__)
+
+// Mouse jiggler state
+static bool     jiggler_enabled = false;
+static uint32_t jiggler_timer   = 0;
+static int8_t   jiggler_dir     = 1;
+#define JIGGLER_INTERVAL 30000 // 30 seconds between jiggles
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -54,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `----------------------'
  */
 [_BASE] = LAYOUT_wrapper(
-  KC_NO,        KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_PLUS,              KC_EQL,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,      KC_NO,
+  KC_NO,        KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_PLUS,              JIGGLER ,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,      KC_NO,
   KC_NO,                            BASE_LEFT_UPPER,                   CW_LEFT,              CW_RIGHT,                       BASE_RIGHT_UPPER,            KC_NO,
   KC_NO,                            BASE_LEFT_MID,                                                                           BASE_RIGHT_MID,            KC_NO,
   KC_NO,                            BASE_LEFT_LOWER,                   CW_DOWN,              CW_UP,                          BASE_RIGHT_LOWER,            KC_NO,
@@ -165,21 +172,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_TRNS,     KC_TRNS,
                                       GTSYM,   GTDEF  , KC_TRNS,     KC_TRNS, KC_TRNS, GTDEF
 ),
-
-[_MOUSE] = LAYOUT_wrapper(
-  // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS,                  NUMBER_LEFT_UPPER,          KC_TRNS,     KC_TRNS,                   NUMBER_RIGHT_UPPER,        KC_TRNS,
-  KC_TRNS,                  NUMBER_LEFT_MID,                                                    NUMBER_RIGHT_MID,          KC_TRNS,
-  KC_TRNS,                  NUMBER_LEFT_LOWER,          KC_TRNS,     KC_TRNS,                   NUMBER_RIGHT_LOWER,        KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-
-                                               KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
-                                                        KC_TRNS,     KC_TRNS,
-                                      GTSYM,   GTDEF  , KC_TRNS,     KC_TRNS, KC_TRNS, GTDEF
-),
-
-
 };
 
 
@@ -203,6 +195,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
       case CW_UP:
         SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "k");
+        return false;
+      case JIGGLER:
+        jiggler_enabled = !jiggler_enabled;
+        jiggler_timer   = timer_read32();
         return false;
     }
   }
@@ -283,5 +279,20 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
   return state;
 };
+
+// Mouse jiggler - moves mouse slightly every JIGGLER_INTERVAL ms
+void housekeeping_task_user(void) {
+    if (jiggler_enabled && timer_elapsed32(jiggler_timer) > JIGGLER_INTERVAL) {
+        jiggler_timer = timer_read32();
+        if (jiggler_dir > 0) {
+            tap_code(MS_UP);
+            tap_code(MS_RGHT);
+        } else {
+            tap_code(MS_DOWN);
+            tap_code(MS_LEFT);
+        }
+        jiggler_dir = -jiggler_dir; // Alternate direction
+    }
+}
 
 #include "leader_functions/functions.c"
