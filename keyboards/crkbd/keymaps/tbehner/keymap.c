@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
+// #include "common/sway_layer_defs.h"
 #include "common/common_keys.h"
 
 enum layers {
@@ -25,6 +26,7 @@ enum layers {
   _NUMB,
   _SYMB,
   _NAV,
+  _ZELLIJ,
 };
 
 enum custom_keycodes {
@@ -32,6 +34,7 @@ enum custom_keycodes {
   SYMB,
   NUMB,
   NAV,
+  ZELLIJ,
   CW_LEFT,
   CW_RIGHT,
   CW_UP,
@@ -52,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
                       BASE_LEFT_LOWER           ,                         BASE_RIGHT_LOWER ,
   //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                QK_LEAD,   GTSYM,  NTAB  ,     SSSFT,   SSYM  , QK_LEAD
+                                GTZIJ,   GTSYM,  NTAB  ,     SSSFT,   SSYM  , QK_LEAD
                             //`--------------------------'  `--------------------------'
 
   ),
@@ -91,7 +94,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+
                                 KC_TRNS, GTNUM,  GTDEF  ,     KC_DEL, KC_ENT  , KC_TRNS
                             //`--------------------------'  `--------------------------'
-  )
+  ),
+  [_ZELLIJ] = LAYOUT_wrapper(
+  //,-------------------------------------------.                    ,---------------------------------------------
+                      ZELLIJ_LEFT_UPPER           ,                         ZELLIJ_RIGHT_UPPER ,
+  //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+
+                      ZELLIJ_LEFT_MID             ,                         ZELLIJ_RIGHT_MID   ,
+  //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+
+                      ZELLIJ_LEFT_LOWER           ,                         ZELLIJ_RIGHT_LOWER ,
+  //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+
+                                KC_TRNS, GTSYM,  GTDEF  ,     KC_TRNS, GTDEF  , KC_TRNS
+                            //`--------------------------'  `--------------------------'
+
+          )
 };
 
 #ifdef ENCODER_MAP_ENABLE
@@ -106,9 +121,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
     switch (keycode) {
-      case AW_SWITCH:
-        SEND_STRING(SS_DOWN(X_LCTL) "c" SS_UP(X_LCTL) "w");
-        return false;
       case CW_LEFT:
         SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "h");
         return false;
