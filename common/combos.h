@@ -1,3 +1,31 @@
+/*
+ * Combo overview (Colemak)
+ *
+ *   ┌───┬───┬───┬───┬───┐                 ┌───┬───┬───┬───┬───┐
+ *   │ Q │ W │ F │ P │ G │                 │ J │ L │ U │ Y │ ; │
+ *   └───┴───┴───┴───┴───┘                 └───┴───┴───┴───┴───┘
+ *    └─┘ └─────┘   └─┘                         └─────┘ └─────┘
+ *    Cut  Zellij  Paste                           Esc
+ *        └───────────┘                                  Zellij
+ *           Shift+Ins
+ *
+ *   ┌───┬───┬───┬───┬───┐                 ┌───┬───┬───┬───┬───┐
+ *   │ A │ R │ S │ T │ D │                 │ H │ N │ E │ I │ O │
+ *   └───┴───┴───┴───┴───┘                 └───┴───┴───┴───┴───┘
+ *    └─────┘                               └─┘
+ *     Copy                                 Bsp
+ *         └─┘   └─┘                            └─────┘
+ *        Lead   Ent                              Ent
+ *         └──*──┘   └──*──┘                         └─────┘
+ *             Tab    WsMov                           Lead
+ *                                                        └─────┘
+ *                                                         Del
+ *                                                └────*────┘
+ *                                                     Tab
+ *
+ *   * = non-adjacent pair
+ */
+
 const uint16_t PROGMEM move_workspace[] = { KC_D, KC_S, COMBO_END};
 
 // [Q, W] => Cut
@@ -6,11 +34,11 @@ const uint16_t PROGMEM cut_combo[] = { KC_Q, KC_W, COMBO_END};
 // [H, N] => Backspace
 const uint16_t PROGMEM bspc_combo[] = { KC_H, KC_N, COMBO_END};
 
-// [U, Y] => Delete
-const uint16_t PROGMEM del_combo[] = { KC_U, KC_Y, COMBO_END};
+// [U, Y] => Zellij layer (right hand)
+const uint16_t PROGMEM zellij_uy_combo[] = { KC_U, KC_Y, COMBO_END};
 
-// [W, F] => Copy
-const uint16_t PROGMEM copy_combo[] = { KC_W, KC_F, COMBO_END};
+// [W, F] => Zellij layer (left hand)
+const uint16_t PROGMEM zellij_wf_combo[] = { KC_W, KC_F, COMBO_END};
 
 // [F, P] => Paste
 const uint16_t PROGMEM paste_combo[] = { KC_F, KC_P, COMBO_END};
@@ -33,6 +61,18 @@ const uint16_t PROGMEM ent_combo[] = { KC_N, KC_E, COMBO_END};
 // [N, I] => Tab
 const uint16_t PROGMEM tab_combo[] = { KC_N, KC_I, COMBO_END};
 
+// [R, S] => Leader (left hand)
+const uint16_t PROGMEM leader_left_combo[] = { KC_R, KC_S, COMBO_END};
+
+// [E, I] => Leader (right hand)
+const uint16_t PROGMEM leader_right_combo[] = { KC_E, KC_I, COMBO_END};
+
+// [A, R] => Copy
+const uint16_t PROGMEM copy_combo[] = { KC_A, KC_R, COMBO_END};
+
+// [I, O] => Delete
+const uint16_t PROGMEM del_combo[] = { KC_I, KC_O, COMBO_END};
+
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(esc_combo, KC_ESC),
   COMBO(ent_combo, KC_ENT),
@@ -45,4 +85,8 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(cut_combo, LCTL(KC_X)),
   COMBO(bspc_combo, KC_BSPC),
   COMBO(del_combo, KC_DEL),
+  COMBO(leader_left_combo, QK_LEAD),
+  COMBO(leader_right_combo, QK_LEAD),
+  COMBO(zellij_wf_combo, OSL(_ZELLIJ)),
+  COMBO(zellij_uy_combo, OSL(_ZELLIJ)),
 };

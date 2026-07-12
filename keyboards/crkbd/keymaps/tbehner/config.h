@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define IGNORE_MOD_TAP_INTERRUPT
 
 
-#define COMBO_COUNT 11
+#define COMBO_COUNT 15
 #define COMBO_TERM 30
 #define LEADER_TIMEOUT 250
 #define LEADER_PER_KEY_TIMING
