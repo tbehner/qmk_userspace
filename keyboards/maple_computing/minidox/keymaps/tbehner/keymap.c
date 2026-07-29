@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         BASE_LEFT_UPPER,                        BASE_RIGHT_UPPER,
         BASE_LEFT_MID  ,                        BASE_RIGHT_MID  ,
         BASE_LEFT_LOWER,                        BASE_RIGHT_LOWER,
-        GTZIJ, GTSYM ,  NTAB,         SSSFT,    SSYM,    QK_LEAD
+        BASE_LEFT_THUMB,                        BASE_RIGHT_THUMB
 ),
 
 [_SYMB] = LAYOUT_wrapper(
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         SYMBOL_LEFT_UPPER,                                        SYMBOL_RIGHT_UPPER,
         SYMBOL_LEFT_MID,                                          SYMBOL_RIGHT_MID,
         SYMBOL_LEFT_LOWER,                                        SYMBOL_RIGHT_LOWER,
-        STNUM  , STNAV  , GTDEF  ,                    KC_BSPC, GTNAV,   KC_TRNS
+        SYMBOL_LEFT_THUMB,                                        SYMBOL_RIGHT_THUMB
 ),
 
 [_NAV] = LAYOUT_wrapper(
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       NAVIGATION_LEFT_UPPER,                     NAVIGATION_RIGHT_UPPER,
                       NAVIGATION_LEFT_MID,                       NAVIGATION_RIGHT_MID,
                       NAVIGATION_LEFT_LOWER,                     NAVIGATION_RIGHT_LOWER,
-                    KC_TRNS, GTNUM  , GTDEF  ,                    KC_DEL , KC_ENT, KC_TRNS
+                    NAVIGATION_LEFT_THUMB,                        NAVIGATION_RIGHT_THUMB
 ),
 
 [_NUMB] = LAYOUT_wrapper(
@@ -85,14 +85,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 NUMBER_LEFT_UPPER,                            NUMBER_RIGHT_UPPER,
                 NUMBER_LEFT_MID  ,                            NUMBER_RIGHT_MID  ,
                 NUMBER_LEFT_LOWER,                            NUMBER_RIGHT_LOWER,
-                   KC_TRNS,  GTSYM,   GTDEF  ,           KC_TRNS, GTDEF,   KC_TRNS
+                   NUMBER_LEFT_THUMB,                         NUMBER_RIGHT_THUMB
 ),
 
 [_ZELLIJ] = LAYOUT_wrapper(
                 ZELLIJ_LEFT_UPPER,                            ZELLIJ_RIGHT_UPPER,
                 ZELLIJ_LEFT_MID  ,                            ZELLIJ_RIGHT_MID  ,
                 ZELLIJ_LEFT_LOWER,                            ZELLIJ_RIGHT_LOWER,
-                   KC_TRNS,  GTSYM,   GTDEF  ,           KC_TRNS, GTDEF,   KC_TRNS
+                   ZELLIJ_LEFT_THUMB,                         ZELLIJ_RIGHT_THUMB
 ),
 };
 
