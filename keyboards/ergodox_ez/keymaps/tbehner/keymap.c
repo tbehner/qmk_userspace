@@ -7,6 +7,7 @@ enum layers {
     _SYMB, // Symbols
     _NAV, // navigation Layer
     _NUMB, // Number Layer
+    _ZELLIJ, // Zellij Layer
     // _MOUSE, // I will do something usefull with this layer some day
 };
 
@@ -66,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,                            BASE_LEFT_MID,                                                                           BASE_RIGHT_MID,            KC_NO,
   KC_NO,                            BASE_LEFT_LOWER,                   CW_DOWN,              CW_UP,                          BASE_RIGHT_LOWER,            KC_NO,
   KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, QK_LEAD,                                              QK_LEAD, KC_SPC,  KC_RALT, KC_RSFT,  KC_NO,
-                                                             KC_HOME, KC_END  ,              KC_PGUP, KC_PGDN,
-                                                                      KC_TAB  ,              KC_ESC,
-                                                     GTSYM, NTAB,     KC_TAB  ,              LCA(KC_DEL), SSSFT , SSYM
+                                                             KC_NO,   KC_NO   ,              KC_NO,   KC_NO,
+                                                                      KC_NO   ,              KC_NO,
+                                                     BASE_LEFT_THUMB,                        BASE_RIGHT_THUMB
 ),
 
 
@@ -102,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, STNUM  ,                                         KC_TRNS, KC_TRNS, KC_DOT,  KC_TRNS, KC_TRNS,
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
-                                      STNAV  ,  GTDEF  ,KC_TRNS,     KC_TRNS, KC_BSPC, GTNAV
+                                      SYMBOL_LEFT_THUMB,              SYMBOL_RIGHT_THUMB
 ),
 
 /* Keymap 2: Media and VIM-like keys
@@ -136,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS,
                                                         KC_TRNS,          KC_TRNS,
-                                      GTNUM,   GTDEF  , KC_TRNS,          KC_TRNS,  KC_DEL , KC_ENT
+                                      NAVIGATION_LEFT_THUMB,            NAVIGATION_RIGHT_THUMB
 ),
 
 /* Keymap 3: Numbers
@@ -170,7 +171,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
-                                      GTSYM,   GTDEF  , KC_TRNS,     KC_TRNS, KC_TRNS, GTDEF
+                                      NUMBER_LEFT_THUMB,               NUMBER_RIGHT_THUMB
+),
+
+[_ZELLIJ] = LAYOUT_wrapper(
+  // left hand
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS,                  ZELLIJ_LEFT_UPPER,          KC_TRNS,     KC_TRNS,                   ZELLIJ_RIGHT_UPPER,        KC_TRNS,
+  KC_TRNS,                  ZELLIJ_LEFT_MID,                                                    ZELLIJ_RIGHT_MID,          KC_TRNS,
+  KC_TRNS,                  ZELLIJ_LEFT_LOWER,          KC_TRNS,     KC_TRNS,                   ZELLIJ_RIGHT_LOWER,        KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+
+                                               KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
+                                                        KC_TRNS,     KC_TRNS,
+                                      ZELLIJ_LEFT_THUMB,               ZELLIJ_RIGHT_THUMB
 ),
 };
 

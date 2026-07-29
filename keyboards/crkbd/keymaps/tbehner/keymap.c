@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
                       BASE_LEFT_LOWER           ,                         BASE_RIGHT_LOWER ,
   //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                GTZIJ,   GTSYM,  NTAB  ,     SSSFT,   SSYM  , QK_LEAD
+                                BASE_LEFT_THUMB,             BASE_RIGHT_THUMB
                             //`--------------------------'  `--------------------------'
 
   ),
@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+
                       NUMBER_LEFT_LOWER           ,                         NUMBER_RIGHT_LOWER ,
   //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+
-                               _______, GTSYM    ,  GTDEF,   _______,   GTDEF, _______
+                               NUMBER_LEFT_THUMB,           NUMBER_RIGHT_THUMB
                             //`--------------------------'  `--------------------------'
   ),
 
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+
                       SYMBOL_LEFT_LOWER           ,                         SYMBOL_RIGHT_LOWER ,
   //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+
-                               KC_TRNS ,   STNAV,  GTDEF ,     KC_BSPC,  GTNAV, KC_TRNS
+                               SYMBOL_LEFT_THUMB,           SYMBOL_RIGHT_THUMB
                             //`--------------------------'  `--------------------------'
   ),
 
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+
                       NAVIGATION_LEFT_LOWER           ,                         NAVIGATION_RIGHT_LOWER ,
   //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+
-                                KC_TRNS, GTNUM,  GTDEF  ,     KC_DEL, KC_ENT  , KC_TRNS
+                                NAVIGATION_LEFT_THUMB,      NAVIGATION_RIGHT_THUMB
                             //`--------------------------'  `--------------------------'
   ),
   [_ZELLIJ] = LAYOUT_wrapper(
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+
                       ZELLIJ_LEFT_LOWER           ,                         ZELLIJ_RIGHT_LOWER ,
   //|-------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+
-                                KC_TRNS, GTSYM,  GTDEF  ,     KC_TRNS, GTDEF  , KC_TRNS
+                                ZELLIJ_LEFT_THUMB,          ZELLIJ_RIGHT_THUMB
                             //`--------------------------'  `--------------------------'
 
           )

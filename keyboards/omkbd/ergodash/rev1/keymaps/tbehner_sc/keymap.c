@@ -8,7 +8,8 @@ enum layer_names {
     _ADJUST,
     _NUMB,
     _SYMB,
-    _NAV
+    _NAV,
+    _ZELLIJ
 };
 
 enum custom_keycodes {
@@ -48,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                   BASE_LEFT_UPPER,                    _______,                              _______,                      BASE_RIGHT_UPPER,          _______, \
     COPY   ,                   BASE_LEFT_MID,                      _______,                              _______,                      BASE_RIGHT_MID,            _______, \
     PASTE  ,                   BASE_LEFT_LOWER,                    _______,                              _______,                      BASE_RIGHT_LOWER,          _______, \
-    _______, _______, _______, QK_LEAD,          GTSYM  , NTAB   , _______ ,           _______ , SSSFT ,  SSYM ,           QK_LEAD , _______, _______,_______  \
+    _______, _______, _______, BASE_LEFT_THUMB, _______ ,           _______ , BASE_RIGHT_THUMB,           _______, _______,_______  \
   ),
 
   [_NUMB] = LAYOUT_wrapper(
@@ -56,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                 NUMBER_LEFT_UPPER,          _______,                       _______,                    NUMBER_RIGHT_UPPER,       _______, \
     _______,                 NUMBER_LEFT_MID,            _______,                       _______,                    NUMBER_RIGHT_MID,         _______, \
     _______,                 NUMBER_LEFT_LOWER,          _______,                       _______,                    NUMBER_RIGHT_LOWER,       _______, \
-    _______, _______, _______, _______,          GTSYM  ,GTDEF  ,_______,       _______,_______, GTDEF  ,          _______, _______, _______, _______  \
+    _______, _______, _______, NUMBER_LEFT_THUMB, _______,       _______, NUMBER_RIGHT_THUMB,          _______, _______, _______  \
   ),
 
 
@@ -78,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD,                  SYMBOL_LEFT_UPPER,          _______,                        _______,                   SYMBOL_RIGHT_UPPER,        _______, \
     KC_LCTL,                  SYMBOL_LEFT_MID,            _______,                        KC_BSPC,                   SYMBOL_RIGHT_MID,          _______, \
     KC_LSFT,                  SYMBOL_LEFT_LOWER,          _______,                        KC_DEL ,                   SYMBOL_RIGHT_LOWER,        _______, \
-    KC_LCTL, KC_LGUI, KC_LALT, KC_ASTR,          STNAV  , GTDEF  , _______,       _______,KC_BSPC, GTNAV  ,          _______, _______, _______, _______ \
+    KC_LCTL, KC_LGUI, KC_LALT, SYMBOL_LEFT_THUMB, _______,       _______, SYMBOL_RIGHT_THUMB,          _______, _______, _______ \
   ),
 
   /* Raise
@@ -99,7 +100,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                   NAVIGATION_LEFT_UPPER,     _______,                        _______,                   NAVIGATION_RIGHT_UPPER,     _______, \
     _______,                   NAVIGATION_LEFT_MID,       _______,                        _______,                   NAVIGATION_RIGHT_MID,       _______, \
     _______,                   NAVIGATION_LEFT_LOWER,     _______,                         KC_DEL,                   NAVIGATION_RIGHT_LOWER,     _______, \
-    _______, _______, _______, _______,          GTNUM   , GTDEF  ,_______,        KC_DEL, KC_DEL, KC_ENT,           _______,  _______, _______, _______   \
+    _______, _______, _______, NAVIGATION_LEFT_THUMB, _______,        KC_DEL, NAVIGATION_RIGHT_THUMB,           _______,  _______, _______   \
+  ),
+
+  [_ZELLIJ] = LAYOUT_wrapper(
+    _______, _______, _______, _______, _______, _______,_______,                       _______, _______, _______, _______, _______, _______, _______, \
+    _______,                 ZELLIJ_LEFT_UPPER,          _______,                       _______,                    ZELLIJ_RIGHT_UPPER,       _______, \
+    _______,                 ZELLIJ_LEFT_MID,            _______,                       _______,                    ZELLIJ_RIGHT_MID,         _______, \
+    _______,                 ZELLIJ_LEFT_LOWER,          _______,                       _______,                    ZELLIJ_RIGHT_LOWER,       _______, \
+    _______, _______, _______, ZELLIJ_LEFT_THUMB, _______,       _______, ZELLIJ_RIGHT_THUMB,          _______, _______, _______  \
   ),
 };
 
