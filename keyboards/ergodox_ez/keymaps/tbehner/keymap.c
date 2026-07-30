@@ -66,10 +66,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,                            BASE_LEFT_UPPER,                   CW_LEFT,              CW_RIGHT,                       BASE_RIGHT_UPPER,            KC_NO,
   KC_NO,                            BASE_LEFT_MID,                                                                           BASE_RIGHT_MID,            KC_NO,
   KC_NO,                            BASE_LEFT_LOWER,                   CW_DOWN,              CW_UP,                          BASE_RIGHT_LOWER,            KC_NO,
-  KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, QK_LEAD,                                              QK_LEAD, KC_SPC,  KC_RALT, KC_RSFT,  KC_NO,
+  KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, BASE_LEFT_THUMB_1,                          BASE_RIGHT_THUMB_3, KC_SPC,  KC_RALT, KC_RSFT,  KC_NO,
                                                              KC_NO,   KC_NO   ,              KC_NO,   KC_NO,
                                                                       KC_NO   ,              KC_NO,
-                                                     BASE_LEFT_THUMB,                        BASE_RIGHT_THUMB
+                                   BASE_LEFT_THUMB_2, BASE_LEFT_THUMB_3, KC_NO,              KC_NO, BASE_RIGHT_THUMB_1, BASE_RIGHT_THUMB_2,
 ),
 
 
@@ -100,10 +100,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,                  SYMBOL_LEFT_UPPER,          KC_TRNS,     KC_TRNS,                   SYMBOL_RIGHT_UPPER,        KC_F12,
   KC_TRNS,                  SYMBOL_LEFT_MID,                                                    SYMBOL_RIGHT_MID,          KC_TRNS,
   KC_TRNS,                  SYMBOL_LEFT_LOWER,          KC_TRNS,     KC_DQT ,                   SYMBOL_RIGHT_LOWER,        KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, STNUM  ,                                         KC_TRNS, KC_TRNS, KC_DOT,  KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, SYMBOL_LEFT_THUMB_3,                     SYMBOL_RIGHT_THUMB_3, KC_TRNS, KC_DOT,  KC_TRNS, KC_TRNS,
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
-                                      SYMBOL_LEFT_THUMB,              SYMBOL_RIGHT_THUMB
+              SYMBOL_LEFT_THUMB_2, SYMBOL_LEFT_THUMB_1, KC_TRNS,     KC_TRNS, SYMBOL_RIGHT_THUMB_1, SYMBOL_RIGHT_THUMB_2
 ),
 
 /* Keymap 2: Media and VIM-like keys
@@ -133,11 +133,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,                   NAVIGATION_LEFT_UPPER,    KC_TRNS,           KC_TRNS,                   NAVIGATION_RIGHT_UPPER,    KC_TRNS,
   KC_TRNS,                   NAVIGATION_LEFT_MID,                                                    NAVIGATION_RIGHT_MID,      KC_TRNS,
   KC_TRNS,                   NAVIGATION_LEFT_LOWER,    KC_TRNS,           KC_TRNS,                   NAVIGATION_RIGHT_LOWER,    KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, NAVIGATION_LEFT_THUMB_3,                 NAVIGATION_RIGHT_THUMB_3, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
                                                KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS,
                                                         KC_TRNS,          KC_TRNS,
-                                      NAVIGATION_LEFT_THUMB,            NAVIGATION_RIGHT_THUMB
+      NAVIGATION_LEFT_THUMB_1, NAVIGATION_LEFT_THUMB_2, KC_TRNS,          KC_TRNS, NAVIGATION_RIGHT_THUMB_1, NAVIGATION_RIGHT_THUMB_2
 ),
 
 /* Keymap 3: Numbers
@@ -167,11 +167,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,                  NUMBER_LEFT_UPPER,          KC_TRNS,     KC_TRNS,                   NUMBER_RIGHT_UPPER,        KC_TRNS,
   KC_TRNS,                  NUMBER_LEFT_MID,                                                    NUMBER_RIGHT_MID,          KC_TRNS,
   KC_TRNS,                  NUMBER_LEFT_LOWER,          KC_TRNS,     KC_TRNS,                   NUMBER_RIGHT_LOWER,        KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, NUMBER_LEFT_THUMB_1,                     NUMBER_RIGHT_THUMB_3, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
-                                      NUMBER_LEFT_THUMB,               NUMBER_RIGHT_THUMB
+              NUMBER_LEFT_THUMB_2, NUMBER_LEFT_THUMB_3, KC_TRNS,     KC_TRNS, NUMBER_RIGHT_THUMB_1, NUMBER_RIGHT_THUMB_2
 ),
 
 [_ZELLIJ] = LAYOUT_wrapper(
@@ -180,11 +180,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS,                  ZELLIJ_LEFT_UPPER,          KC_TRNS,     KC_TRNS,                   ZELLIJ_RIGHT_UPPER,        KC_TRNS,
   KC_TRNS,                  ZELLIJ_LEFT_MID,                                                    ZELLIJ_RIGHT_MID,          KC_TRNS,
   KC_TRNS,                  ZELLIJ_LEFT_LOWER,          KC_TRNS,     KC_TRNS,                   ZELLIJ_RIGHT_LOWER,        KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, ZELLIJ_LEFT_THUMB_1,                     ZELLIJ_RIGHT_THUMB_3, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
-                                      ZELLIJ_LEFT_THUMB,               ZELLIJ_RIGHT_THUMB
+              ZELLIJ_LEFT_THUMB_2, ZELLIJ_LEFT_THUMB_3, KC_TRNS,     KC_TRNS, ZELLIJ_RIGHT_THUMB_1, ZELLIJ_RIGHT_THUMB_2
 ),
 };
 
