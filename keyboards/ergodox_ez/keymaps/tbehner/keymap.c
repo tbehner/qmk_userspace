@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_NO,        KC_LSFT,     KC_TAB,        KC_LGUI, BASE_LEFT_THUMB_1,                          BASE_RIGHT_THUMB_3, KC_SPC,  KC_RALT, KC_RSFT,  KC_NO,
                                                              KC_NO,   KC_NO   ,              KC_NO,   KC_NO,
                                                                       KC_NO   ,              KC_NO,
-                                   BASE_LEFT_THUMB_2, BASE_LEFT_THUMB_3, KC_NO,              KC_NO, BASE_RIGHT_THUMB_1, BASE_RIGHT_THUMB_2,
+                                   BASE_LEFT_THUMB_2, BASE_LEFT_THUMB_3, KC_NO,              KC_NO, BASE_RIGHT_THUMB_1, BASE_RIGHT_THUMB_2
 ),
 
 

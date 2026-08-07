@@ -20,7 +20,6 @@ enum custom_keycodes {
   CW_RIGHT,
   CW_UP,
   CW_DOWN,
-  AW_SWITCH,
 };
 
 #include "common/common_keys.h"
@@ -49,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                   BASE_LEFT_UPPER,                    _______,                              _______,                      BASE_RIGHT_UPPER,          _______, \
     COPY   ,                   BASE_LEFT_MID,                      _______,                              _______,                      BASE_RIGHT_MID,            _______, \
     PASTE  ,                   BASE_LEFT_LOWER,                    _______,                              _______,                      BASE_RIGHT_LOWER,          _______, \
-    _______, _______, _______, BASE_LEFT_THUMB, _______ ,           _______ , BASE_RIGHT_THUMB,           _______, _______,_______  \
+    _______, _______, _______,                    BASE_LEFT_THUMB, _______ ,                   _______ , BASE_RIGHT_THUMB,                        _______, _______,_______  \
   ),
 
   [_NUMB] = LAYOUT_wrapper(
@@ -57,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                 NUMBER_LEFT_UPPER,          _______,                       _______,                    NUMBER_RIGHT_UPPER,       _______, \
     _______,                 NUMBER_LEFT_MID,            _______,                       _______,                    NUMBER_RIGHT_MID,         _______, \
     _______,                 NUMBER_LEFT_LOWER,          _______,                       _______,                    NUMBER_RIGHT_LOWER,       _______, \
-    _______, _______, _______, NUMBER_LEFT_THUMB, _______,       _______, NUMBER_RIGHT_THUMB,          _______, _______, _______  \
+    _______, _______, _______,                  NUMBER_LEFT_THUMB, _______,       _______, NUMBER_RIGHT_THUMB,          _______, _______, _______  \
   ),
 
 
@@ -117,19 +116,21 @@ float tone_qwerty[][2]     = SONG(QWERTY_SOUND);
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case CW_LEFT:
-            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "h");
-            return false;
-        case CW_RIGHT:
-            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "l");
-            return false;
-        case CW_DOWN:
-            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "j");
-            return false;
-        case CW_UP:
-            SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "k");
-            return false;
+    if (record->event.pressed) {
+        switch (keycode) {
+            case CW_LEFT:
+                SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "h");
+                return false;
+            case CW_RIGHT:
+                SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "l");
+                return false;
+            case CW_DOWN:
+                SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "j");
+                return false;
+            case CW_UP:
+                SEND_STRING(SS_DOWN(X_LCTL) "w" SS_UP(X_LCTL) "k");
+                return false;
+        }
     }
     return true;
 }
