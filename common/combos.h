@@ -24,6 +24,11 @@
  *                                                     Tab
  *
  *   * = non-adjacent pair
+ *
+ *   [F, T] (cross-row) => toggle the nav layer on and off
+ *
+ *   Combo keycodes are resolved against the base layer
+ *   (COMBO_ONLY_FROM_LAYER 0), so every combo works on every layer.
  */
 
 const uint16_t PROGMEM move_workspace[] = { KC_D, KC_S, COMBO_END};
@@ -51,6 +56,9 @@ const uint16_t PROGMEM left_ent_combo[] = { KC_T, KC_S, COMBO_END};
 
 // [T, R] => Tab
 const uint16_t PROGMEM left_tab_combo[] = { KC_T, KC_R, COMBO_END};
+
+// [T, F] => toggle nav layer (on and off)
+const uint16_t PROGMEM toggle_nav_combo[] = { KC_T, KC_F, COMBO_END};
 
 // [L, U] => Esc
 const uint16_t PROGMEM esc_combo[] = { KC_L, KC_U, COMBO_END};
@@ -89,4 +97,5 @@ combo_t key_combos[COMBO_COUNT] = {
   COMBO(leader_right_combo, QK_LEAD),
   COMBO(zellij_wf_combo, OSL(_ZELLIJ)),
   COMBO(zellij_uy_combo, OSL(_ZELLIJ)),
+  COMBO(toggle_nav_combo, TG(_NAV)),
 };
