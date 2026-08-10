@@ -8,11 +8,14 @@
 #   change yes to no to disable
 #
 #BOOTMAGIC_ENABLE = no       # Enable Bootmagic Lite
-#MOUSEKEY_ENABLE = yes       # Mouse keys
-#EXTRAKEY_ENABLE = yes       # Audio control and System control
-#CONSOLE_ENABLE = yes        # Console for debug
-#COMMAND_ENABLE = yes        # Commands for debug and configuration
 #NKRO_ENABLE = yes           # Enable N-Key Rollover
+
+# Platz sparen: nichts davon wird im Keymap benutzt
+COMMAND_ENABLE = no    # Deaktiviert die Magic-Befehle (Bootloader-Sprung etc.)
+CONSOLE_ENABLE = no    # Deaktiviert Debugging-Output
+MOUSEKEY_ENABLE = no   # Keine Maussteuerung über die Tastatur
+EXTRAKEY_ENABLE = no   # Media-Tasten, Systemsteuerung
+MUSIC_ENABLE = no      # Musik-Modus
 LTO_ENABLE = yes
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 #RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow

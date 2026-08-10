@@ -37,7 +37,7 @@ const uint16_t PROGMEM move_workspace[] = { KC_D, KC_S, COMBO_END};
 const uint16_t PROGMEM cut_combo[] = { KC_Q, KC_W, COMBO_END};
 
 // [H, E] => Backspace
-const uint16_t PROGMEM bspc_combo[] = { KC_H, KC_N, COMBO_END};
+const uint16_t PROGMEM bspc_combo[] = { KC_H, KC_E, COMBO_END};
 
 // [U, Y] => Zellij layer (right hand)
 const uint16_t PROGMEM zellij_uy_combo[] = { KC_U, KC_Y, COMBO_END};
