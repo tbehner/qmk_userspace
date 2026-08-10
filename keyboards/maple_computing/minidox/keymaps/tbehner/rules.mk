@@ -7,3 +7,6 @@ CONSOLE_ENABLE = no    # Deaktiviert Debugging-Output (spart viel Platz!)
 MOUSEKEY_ENABLE = no   # Falls du keine Maussteuerung über die Tastatur brauchst
 EXTRAKEY_ENABLE = no   # Media-Tasten, Systemsteuerung
 MUSIC_ENABLE = no      # Musik-Modus
+MAGIC_ENABLE = no      # Magic-Keycodes (CG_SWAP, NK_TOGG, ...)
+SPACE_CADET_ENABLE = no
+GRAVE_ESC_ENABLE = no

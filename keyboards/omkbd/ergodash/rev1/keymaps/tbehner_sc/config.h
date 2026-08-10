@@ -42,3 +42,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define COMBO_ONLY_FROM_LAYER 0
 #define LEADER_TIMEOUT 350
 #define LEADER_PER_KEY_TIMING
+
+// wenige Layer -> 8 Bit reichen
+#define LAYER_STATE_8BIT

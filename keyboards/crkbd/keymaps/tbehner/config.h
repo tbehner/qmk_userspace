@@ -36,6 +36,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_TIMEOUT 250
 #define LEADER_PER_KEY_TIMING
 
+// nur 5 Layer -> 8 Bit reichen
+#define LAYER_STATE_8BIT
+
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
     #define RGBLIGHT_EFFECT_RAINBOW_MOOD

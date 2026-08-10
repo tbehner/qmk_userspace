@@ -3,9 +3,6 @@
 
 enum layer_names {
     _BASE,
-    _LOWER,
-    _RAISE,
-    _ADJUST,
     _NUMB,
     _SYMB,
     _NAV,
