@@ -29,8 +29,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define IGNORE_MOD_TAP_INTERRUPT
 
 
-#define COMBO_COUNT 16
+#define COMBO_COUNT 17
 #define COMBO_TERM 30
+// the combo timer starts on the first key press only and is never reset,
+// so the whole chord must fall within COMBO_TERM -> fewer misfires
+#define COMBO_STRICT_TIMER
 // resolve combo keycodes against the base layer, so combos work on every layer
 #define COMBO_ONLY_FROM_LAYER 0
 #define LEADER_TIMEOUT 250
