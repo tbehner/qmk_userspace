@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,                   BASE_LEFT_UPPER,                    _______,                              _______,                      BASE_RIGHT_UPPER,          _______, \
     COPY   ,                   BASE_LEFT_MID,                      _______,                              _______,                      BASE_RIGHT_MID,            _______, \
     PASTE  ,                   BASE_LEFT_LOWER,                    _______,                              _______,                      BASE_RIGHT_LOWER,          _______, \
-    _______, _______, _______, BASE_LEFT_THUMB,   _______,            _______,  BASE_RIGHT_THUMB, _______, _______, _______  \
+    _______, _______, _______,                  BASE_LEFT_THUMB,   _______,                     _______,  BASE_RIGHT_THUMB, _______, _______, _______  \
   ),
 
   /* Numbers

@@ -52,6 +52,9 @@
 /// Ctrl + Alt + Gui + Left
 #define MRGHT LCAG(KC_RGHT)
 
+/// Ctrl + Alt + Del
+#define CADEL LCA(KC_DEL)
+
 
 #define F10ALT MT(MOD_LALT, KC_F10)
 #define F11GUI MT(MOD_LGUI, KC_F11)
